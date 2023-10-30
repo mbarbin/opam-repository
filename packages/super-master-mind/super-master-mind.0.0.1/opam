@@ -1,0 +1,37 @@
+opam-version: "2.0"
+synopsis: "A solver for the super master mind game"
+description: "A solver for the super master mind game"
+maintainer: "Mathieu Barbin"
+authors: "Mathieu Barbin"
+license: "MIT"
+homepage: "https://github.com/mbarbin/super-master-mind"
+doc: "https://mbarbin.github.io/super-master-mind/odoc/super-master-mind/index.html"
+bug-reports: "https://github.com/mbarbin/super-master-mind/issues"
+depends: [
+  "ocaml" {>= "5.0"}
+  "dune" {>= "3.11"}
+  "ANSITerminal" {>= "0.8.3"}
+  "base" {>= "v0.16"}
+  "bisect_ppx" {dev & >= "2.8"}
+  "core" {>= "v0.16"}
+  "core_kernel" {>= "v0.16"}
+  "core_unix" {>= "v0.16"}
+  "domainslib" {>= "0.5"}
+  "expect_test_helpers_core" {with-test & >= "v0.16"}
+  "ocaml-embed-file"
+  "parsexp" {>= "v0.16"}
+  "ppx_jane" {>= "v0.16"}
+  "ppx_js_style" {>= "v0.16"}
+  "sexp_diff" {>= "v0.16"}
+  "stdio" {>= "v0.16"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mbarbin/super-master-mind.git"
+url {
+  src: "https://github.com/mbarbin/super-master-mind/archive/refs/tags/0.0.1.tar.gz"
+  checksum: "sha256=228adbb026a92779ac3322f0f9f266cd0bf529e5f324a3024e50aac31ea9dd11"
+}
