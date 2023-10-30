@@ -1,0 +1,36 @@
+opam-version: "2.0"
+synopsis: "An educational project for digital circuits programming"
+description: "An educational project for digital circuits programming"
+maintainer: "Mathieu Barbin"
+authors: "Mathieu Barbin"
+license: "MIT"
+homepage: "https://github.com/mbarbin/bopkit"
+bug-reports: "https://github.com/mbarbin/bopkit/issues"
+depends: [
+  "ocaml" {>= "5.0"}
+  "dune" {>= "3.11"}
+  "dune-site" {>= "3.11"}
+  "ANSITerminal" {>= "0.8.3"}
+  "bogue" {>= "20221112"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "core_unix" {>= "v0.16" & < "v0.17"}
+  "graphics" {>= "5.1.2"}
+  "mdx" {>= "2.2"}
+  "menhir" {>= "20220210"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "pp" {>= "1.1.2"}
+  "stdune" {>= "3.11"}
+  "tsdl" {>= "0.9.8"}
+  "tsdl-image" {>= "0.6"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mbarbin/bopkit.git"
+url {
+  src: "https://github.com/mbarbin/bopkit/archive/refs/tags/0.2.0.tar.gz"
+  checksum: "sha256=d354e1649ffee7e9713c2be7ae1bd1e40a5a8991fcdacb6c5ee7d93f67e8931b"
+}
