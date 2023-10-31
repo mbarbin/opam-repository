@@ -37,5 +37,5 @@ build: [
 dev-repo: "git+https://github.com/mbarbin/cubzzle.git"
 url {
   src: "https://github.com/mbarbin/cubzzle/archive/refs/tags/0.0.2.tar.gz"
-  checksum: "sha256=b74951cda1c8b6b6ca28edbf5fd0b22e2101c9376fdcbe0da86ae63b65466ede"
+  checksum: "sha256=7846232822a0e85afccddf71d72db34eea9443c3172aca4930b2b87011ed5ab7"
 }
