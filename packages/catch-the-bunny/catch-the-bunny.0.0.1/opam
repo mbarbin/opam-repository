@@ -1,0 +1,34 @@
+opam-version: "2.0"
+synopsis: "Resolving a small logic puzzle"
+description: "Resolving a small logic puzzle"
+maintainer: "Mathieu Barbin"
+authors: "Mathieu Barbin"
+license: "MIT"
+homepage: "https://github.com/mbarbin/catch-the-bunny"
+doc: "https://mbarbin.github.io/catch-the-bunny/"
+bug-reports: "https://github.com/mbarbin/catch-the-bunny/issues"
+depends: [
+  "ocaml" {>= "5.1"}
+  "dune" {>= "3.11"}
+  "bisect_ppx" {dev & >= "2.8"}
+  "base" {>= "v0.16"}
+  "expect_test_helpers_core" {with-test & >= "v0.16"}
+  "ppx_jane" {>= "v0.16"}
+  "ppx_js_style" {>= "v0.16"}
+  "stdio" {with-test >= "v0.16"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mbarbin/catch-the-bunny.git"
+url {
+  src:
+    "https://github.com/mbarbin/catch-the-bunny/releases/download/0.0.1/catch-the-bunny-0.0.1.tbz"
+  checksum: [
+    "sha256=7156b09d3b51cecba29f49a951d6596daf1a456e1fc8f741a187fd4128da91e3"
+    "sha512=44ff2967211900e083433af722ca2dc466678f29a6f5aeefed91fa5a14f814021ba6f0d03f05f66b5a757fdb013f1429706e1bfd43a1d7e4d14ea5919ea7f096"
+  ]
+}
+x-commit-hash: "abdda457795f31ad08a142bd9d596af036fd4b69"
