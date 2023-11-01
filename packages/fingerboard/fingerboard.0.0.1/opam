@@ -1,0 +1,33 @@
+opam-version: "2.0"
+synopsis: "Studying various temperaments and intervals on the cello fingerboard"
+description: "Studying various temperaments and intervals on the cello fingerboard"
+maintainer: "Mathieu Barbin"
+authors: "Mathieu Barbin"
+license: "MIT"
+homepage: "https://github.com/mbarbin/fingerboard"
+doc: "https://mbarbin.github.io/fingerboard/"
+bug-reports: "https://github.com/mbarbin/fingerboard/issues"
+depends: [
+  "ocaml" {>= "5.1"}
+  "dune" {>= "3.11"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "sexp_diff" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "textutils" {>= "v0.16" & < "v0.17"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mbarbin/fingerboard.git"
+url {
+  src:
+    "https://github.com/mbarbin/fingerboard/releases/download/0.0.1/fingerboard-0.0.1.tbz"
+  checksum: [
+    "sha256=404ace61c874684c6cb81c59744186c5c34fce002dfbd0d2cf22f5337f7ce0c8"
+    "sha512=235e6f1fd16aa5537650afbedd5310670b5fa41713d6248a5977f764722f2a95c5f7c1afef9a995d3ed097f6651554507a897cbd51d45214f371e8ee197a43fc"
+  ]
+}
+x-commit-hash: "aed27b0d8603674515a87cb2c9454694f8d43c6d"
