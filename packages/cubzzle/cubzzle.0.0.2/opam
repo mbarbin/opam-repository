@@ -1,0 +1,46 @@
+opam-version: "2.0"
+synopsis: "Solver for a wooden cube puzzle"
+description: "Solver for a wooden cube puzzle"
+maintainer: "Mathieu Barbin"
+authors: "Mathieu Barbin"
+license: "MIT"
+homepage: "https://github.com/mbarbin/cubzzle"
+doc: "https://mbarbin.github.io/cubzzle/"
+bug-reports: "https://github.com/mbarbin/cubzzle/issues"
+depends: [
+  "ocaml" {>= "5.1"}
+  "dune" {>= "3.11"}
+  "base" {>= "v0.16"}
+  "bisect_ppx" {dev & >= "2.8"}
+  "graphics" {>= "5.1.2"}
+  "core" {>= "v0.16"}
+  "core_unix" {>= "v0.16"}
+  "expect_test_helpers_core" {with-test & >= "v0.16"}
+  "ppx_jane" {>= "v0.16"}
+  "ppx_js_style" {>= "v0.16"}
+  "stdio" {>= "v0.16"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/cubzzle.git"
+url {
+  src:
+    "https://github.com/mbarbin/cubzzle/releases/download/0.0.2/cubzzle-0.0.2.tbz"
+  checksum: [
+    "sha256=08120021d3ee40fda6436accfc76eb82d63bf55e0efd97b42bbc8f2b0c6c8524"
+    "sha512=44b985f9374c1655d2cdf9d1d68d4f2a4c99292ab82782cceb1173198ad30dca67049f07c3973521a89733dbafb2a1049d86133e871e9acbcaee5e67ea9f3fec"
+  ]
+}
+x-commit-hash: "754e72e892b3b083c057dc73e0c548d30040c3b3"
