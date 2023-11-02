@@ -1,0 +1,50 @@
+opam-version: "2.0"
+synopsis: "User-definable progress bars"
+description: """
+A progress bar library for OCaml, featuring a DSL for declaratively specifying
+progress bar formats. Supports rendering multiple progress bars simultaneously."""
+maintainer: ["Craig Ferguson <me@craigfe.io>"]
+authors: ["Craig Ferguson <me@craigfe.io>"]
+license: "MIT"
+homepage: "https://github.com/CraigFe/progress"
+doc: "https://CraigFe.github.io/progress/"
+bug-reports: "https://github.com/CraigFe/progress/issues"
+depends: [
+  "dune" {>= "2.7"}
+  "ocaml" {>= "4.08.0"}
+  "terminal" {= version}
+  "fmt" {>= "0.8.5"}
+  "logs" {>= "0.7.0"}
+  "mtime" {>= "2.0.0"}
+  "uucp" {>= "2.0.0"}
+  "uutf" {>= "1.0.0"}
+  "vector"
+  "optint" {>= "0.1.0"}
+  "alcotest" {with-test & >= "1.4.0"}
+  "astring" {with-test}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/CraigFe/progress.git"
+url {
+  src:
+    "https://github.com/mbarbin/progress/releases/download/0.2.3-preview/progress-0.2.3-preview.tbz"
+  checksum: [
+    "sha256=4a2e96aaeb4afad0de3c17550c8d9acd9c68eaac196842e0af76900e5d0a73ee"
+    "sha512=9b425d910252d744f09b2829459dcdafda0ea594d11f84a0a9dbc2fef31d1091819f05a935804a0fde7e05d3101525a412e10591d984f541592ae5f07c60b8a2"
+  ]
+}
+x-commit-hash: "9fb3230b2711c87b2aa3e279149256a763c5d075"
