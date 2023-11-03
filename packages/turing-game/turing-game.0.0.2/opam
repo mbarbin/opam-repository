@@ -1,0 +1,47 @@
+opam-version: "2.0"
+synopsis: "A bot that can play a board game called Turing Machine"
+description: "A bot that can play a board game called Turing Machine"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/turing-game"
+doc: "https://mbarbin.github.io/turing-game/"
+bug-reports: "https://github.com/mbarbin/turing-game/issues"
+depends: [
+  "ocaml" {>= "5.1"}
+  "dune" {>= "3.11" & >= "3.11"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "core_kernel" {>= "v0.16" & < "v0.17"}
+  "core_unix" {>= "v0.16" & < "v0.17"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "sexp_diff" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/turing-game.git"
+url {
+  src:
+    "https://github.com/mbarbin/turing-game/releases/download/0.0.2/turing-game-0.0.2.tbz"
+  checksum: [
+    "sha256=16aca14717361c6d8271dfd279267c4ba880c2902c4121e9982a64743bddf7ba"
+    "sha512=008e5c2d86e7e3bc904fee85a0a489223e8cec1a340c1c7d24fac1c0b572057e16579ea60ee73a2346051cb7403d31fd19286aa92a5ed8b23f394b90061b2e9a"
+  ]
+}
+x-commit-hash: "5db2988b364221ee737fe25322c9f642cf43a2ad"
