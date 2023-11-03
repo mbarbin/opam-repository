@@ -13,7 +13,7 @@ depends: [
   "base" {>= "v0.16" & < "v0.17"}
   "core" {>= "v0.16" & < "v0.17"}
   "core_kernel" {>= "v0.16" & < "v0.17"}
-  "core_unix" {>= "v0.16" & < "v0.17"}
+  "command-unix-for-opam" {>= "0.0.1"}
   "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
@@ -40,8 +40,8 @@ url {
   src:
     "https://github.com/mbarbin/turing-game/releases/download/0.0.2/turing-game-0.0.2.tbz"
   checksum: [
-    "sha256=16aca14717361c6d8271dfd279267c4ba880c2902c4121e9982a64743bddf7ba"
-    "sha512=008e5c2d86e7e3bc904fee85a0a489223e8cec1a340c1c7d24fac1c0b572057e16579ea60ee73a2346051cb7403d31fd19286aa92a5ed8b23f394b90061b2e9a"
+    "sha256=c894367d62b2869af39f097951ce9be34fcfa83e2b6b70249d2aedfa661cb88e"
+    "sha512=db16b1d9a77668a432fabbe83b2296469d41920014f99fd8d5c433616bdff56af0488e77afc5f6a41f1062e7ed094aa7d7436d27ba463eb3cb1278c03c57d617"
   ]
 }
-x-commit-hash: "5db2988b364221ee737fe25322c9f642cf43a2ad"
+x-commit-hash: "0ec80348a9f2599f2843969c7eac0c9079ef3abe"
