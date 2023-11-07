@@ -36,8 +36,8 @@ url {
   src:
     "https://github.com/mbarbin/fpath-extended/releases/download/0.0.1/fpath-extended-0.0.1.tbz"
   checksum: [
-    "sha256=d4e87a738494da19c6f47cf203a8dc958b38c9cde58798748fdf7ea0dd9b17d4"
-    "sha512=d4508e0face6def367a32d2363a688341b2f275c7a1b0bab799e68a354d6ec7cd8fd8293fa8166cd1216ef2b9e574a544bf0eb805c10182ac5e625f8c109bb88"
+    "sha256=59c114aa4188a83fb747dcf8b7b047be7473399c73221c43beb72ae7dd3ac87e"
+    "sha512=0afa1cb5afca7020f953a927efe734c1e979ad42c702f95e30e21f3b54796fe257180ffa988f3bfd68b2cadcbd1a53c1e06ba720e538b4daa935ad15df8b9503"
   ]
 }
-x-commit-hash: "568435aa1b6c643d192b51101e67700f9740f6b5"
+x-commit-hash: "d61c3327d29590ab54c58f86496ff8d940e09cfe"
