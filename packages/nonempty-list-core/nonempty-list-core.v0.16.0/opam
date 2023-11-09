@@ -1,0 +1,41 @@
+opam-version: "2.0"
+synopsis: "Repackaging core_kernel.nonempty_list as a standalone package"
+description: "Repackaging core_kernel.nonempty_list as a standalone package"
+maintainer: ["Mathieu Barbin"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/nonempty-list-core"
+doc: "https://mbarbin.github.io/nonempty-list-core/"
+bug-reports: "https://github.com/mbarbin/nonempty-list-core/issues"
+depends: [
+  "ocaml" {>= "5.1"}
+  "dune" {>= "3.11" & >= "3.11"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "reversed-list" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/nonempty-list-core.git"
+url {
+  src:
+    "https://github.com/mbarbin/nonempty-list-core/releases/download/v0.16.0/nonempty-list-core-v0.16.0.tbz"
+  checksum: [
+    "sha256=5da834953d347f0965a87be6a1b45dcedb9595e7277db5d5ff8ea880a36fd551"
+    "sha512=ca0067ff90d2888898c4ce603241ff6f7db3f280e80461793a718a6774aea92672c2fab37cd5e1df1b9ffc2ece800bc2aea434171159aff8bcc64c95d536fedc"
+  ]
+}
+x-commit-hash: "e63bc467ca396d9ca2a0bb4829b1e01ecdd74e90"
