@@ -1,0 +1,48 @@
+opam-version: "2.0"
+synopsis: "Reporting located errors and warnings"
+description: "Reporting located errors and warnings"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/error-log"
+doc: "https://mbarbin.github.io/error-log/"
+bug-reports: "https://github.com/mbarbin/error-log/issues"
+depends: [
+  "ocaml" {>= "5.1"}
+  "dune" {>= "3.11" & >= "3.11"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "loc" {>= "0.0.1"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.1"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "stdune" {>= "3.11"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/error-log.git"
+url {
+  src:
+    "https://github.com/mbarbin/error-log/releases/download/0.0.1/error-log-0.0.1.tbz"
+  checksum: [
+    "sha256=51161be39e63f6a3891d72dcfe768f142c2e76b8cc07ed847fc604bb9ab10f38"
+    "sha512=7195338ad21a710be8ebd751e684a84c8101d16e6416b12967d01e7d240cfe2664b5f94fe8e2b5e1e1d5e55d160d8422782dc16fd945d119285cc464a94e8843"
+  ]
+}
+x-commit-hash: "376df6744af3818f6a5a2159c10d42643e53edd7"
