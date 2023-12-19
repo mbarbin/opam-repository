@@ -1,0 +1,50 @@
+opam-version: "2.0"
+synopsis: "An implementation of gRPC using ocaml-protoc"
+description:
+  "Functionality for building gRPC services and rpcs with `ocaml-protoc`"
+maintainer: ["Daniel Quernheim <grpc@quernd.uber.space>"]
+authors: [
+  "Andrew Jeffery <dev@jeffas.io>"
+  "Daniel Quernheim <quernd@users.noreply.github.com>"
+  "Michael Bacarella <m@bacarella.com>"
+  "Sven Anderson <sven@anderson.de>"
+  "Tim McGilchrist <timmcgil@gmail.com>"
+  "Wojtek Czekalski <me@wczekalski.com>"
+  "dimitris.mostrous <dimitris.mostrous@gmail.com>"
+]
+license: "BSD-3-Clause"
+homepage: "https://github.com/dialohq/ocaml-grpc"
+doc: "https://dialohq.github.io/ocaml-grpc"
+bug-reports: "https://github.com/dialohq/ocaml-grpc/issues"
+depends: [
+  "dune" {>= "3.7"}
+  "grpc" {= version}
+  "ocaml-protoc" {>= "3.0"}
+  "pbrt" {>= "3.0"}
+  "pbrt_services" {>= "3.0"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/dialohq/ocaml-grpc.git"
+url {
+  src:
+    "https://github.com/mbarbin/ocaml-grpc/releases/download/0.2.1-preview.1/grpc-0.2.1-preview.1.tbz"
+  checksum: [
+    "sha256=18125e44788820553b4e7c1be09c3458c9b43b2157558bbf4d386547df4bc640"
+    "sha512=5f61ce0989d3c8d315a3817d21e860958f9c093a4335a853dd3423a4e4415b22ebdefdb2ed26938915cbfa0c7f706edd576980b6ce3b94e9edb91b9c2641b690"
+  ]
+}
+x-commit-hash: "ee233e2e5165a181f570faab191ace5a741e56cc"
