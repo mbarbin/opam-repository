@@ -1,0 +1,49 @@
+opam-version: "2.0"
+synopsis: "An Eio implementation of gRPC"
+description: "Functionality for building gRPC services and rpcs with `eio`."
+maintainer: ["Daniel Quernheim <grpc@quernd.uber.space>"]
+authors: [
+  "Andrew Jeffery <dev@jeffas.io>"
+  "Daniel Quernheim <quernd@users.noreply.github.com>"
+  "Michael Bacarella <m@bacarella.com>"
+  "Sven Anderson <sven@anderson.de>"
+  "Tim McGilchrist <timmcgil@gmail.com>"
+  "Wojtek Czekalski <me@wczekalski.com>"
+  "dimitris.mostrous <dimitris.mostrous@gmail.com>"
+]
+license: "BSD-3-Clause"
+homepage: "https://github.com/dialohq/ocaml-grpc"
+doc: "https://dialohq.github.io/ocaml-grpc"
+bug-reports: "https://github.com/dialohq/ocaml-grpc/issues"
+depends: [
+  "dune" {>= "3.7"}
+  "eio" {>= "0.12"}
+  "grpc" {= version}
+  "h2" {>= "0.9.0"}
+  "stringext"
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/dialohq/ocaml-grpc.git"
+url {
+  src:
+    "https://github.com/mbarbin/ocaml-grpc/releases/download/0.2.1-preview.2/grpc-0.2.1-preview.2.tbz"
+  checksum: [
+    "sha256=247c6ec161f0a84e8b7b137ae4ba490ce1efbe763bc51d2d7f95b42dd6e87fa9"
+    "sha512=5d08df7a643074b68cdbfd82955be8cae2493d390ff670eb2262e25f456e0a7dd931199e95a090e549cce6dab3ff3b2ddd1a5a65225f494c02568cd83cb87224"
+  ]
+}
+x-commit-hash: "f0719ecdbfd33c1b0728f79d74f6529dd9c645b4"
