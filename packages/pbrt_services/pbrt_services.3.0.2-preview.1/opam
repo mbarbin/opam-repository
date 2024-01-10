@@ -1,0 +1,38 @@
+opam-version: "2.0"
+synopsis: "Runtime library for ocaml-protoc to support RPC services"
+maintainer: ["Maxime Ransan <maxime.ransan@gmail.com>" "Simon Cruanes"]
+authors: ["Maxime Ransan <maxime.ransan@gmail.com>" "Simon Cruanes"]
+license: "MIT"
+tags: ["protobuf" "encode" "decode" "services" "rpc"]
+homepage: "https://github.com/mransan/ocaml-protoc"
+bug-reports: "https://github.com/mransan/ocaml-protoc/issues"
+depends: [
+  "dune" {>= "2.0"}
+  "ocaml" {>= "4.08"}
+  "pbrt" {= version}
+  "pbrt_yojson" {= version}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mransan/ocaml-protoc.git"
+url {
+  src:
+    "https://github.com/mbarbin/ocaml-protoc/releases/download/3.0.2-preview.1/ocaml-protoc-3.0.2-preview.1.tbz"
+  checksum: [
+    "sha256=db6e6ecfbdaad60aed5b6526a07afb7694ff6f12055d58ffbdea1e128f7e8634"
+    "sha512=4187c59aa0db58d3bea19c013aed7a97201b8fca5fbf1eccfc5d1cb862f2c5f95516e46e826f2d5da15e7528b9882cb48aa99388f7251719513f4bf91f91b0e8"
+  ]
+}
+x-commit-hash: "54ae6ac273f395efbe1678c2d879dddad6f10599"
