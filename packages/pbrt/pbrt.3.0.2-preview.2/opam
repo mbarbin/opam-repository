@@ -1,0 +1,39 @@
+opam-version: "2.0"
+synopsis: "Runtime library for Protobuf tooling"
+maintainer: ["Maxime Ransan <maxime.ransan@gmail.com>" "Simon Cruanes"]
+authors: ["Maxime Ransan <maxime.ransan@gmail.com>" "Simon Cruanes"]
+license: "MIT"
+tags: ["protobuf" "encode" "decode"]
+homepage: "https://github.com/mransan/ocaml-protoc"
+bug-reports: "https://github.com/mransan/ocaml-protoc/issues"
+depends: [
+  "dune" {>= "2.0"}
+  "stdlib-shims"
+  "odoc" {with-doc}
+  "ocaml" {>= "4.08"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mransan/ocaml-protoc.git"
+available: arch != "arm32" & arch != "x86_32" & arch != "ppc32" & arch != "ppc64"
+url {
+  src:
+    "https://github.com/mbarbin/ocaml-protoc/releases/download/3.0.2-preview.2/ocaml-protoc-3.0.2-preview.2.tbz"
+  checksum: [
+    "sha256=59ea5572b52077c0a5e9a523b92976a63412aa5293e27d432a43e9ca1645d153"
+    "sha512=18558bc7c60e0ac00cbf7fa6aa622658da950d217b905d460baa9d3fecef00ab9da4993db866697c79b0c1fc41f1876cecb5785892c76f440acf835db651bf99"
+  ]
+}
+x-commit-hash: "84680bf7d910b4b3c9ed370a8c40de8d68e1ca4f"
