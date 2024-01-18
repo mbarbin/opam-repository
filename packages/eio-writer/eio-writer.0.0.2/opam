@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "Write to an [Eio.Buf_write] with an api that resembles [Stdio]"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-writer"
+doc: "https://mbarbin.github.io/eio-writer/"
+bug-reports: "https://github.com/mbarbin/eio-writer/issues"
+depends: [
+  "dune" {>= "3.12"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "eio" {>= "0.13"}
+  "eio_main" {with-test & >= "0.13"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-writer.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-writer/releases/download/0.0.2/eio-writer-0.0.2.tbz"
+  checksum: [
+    "sha256=0b9e3d6b5dcfebf6cf9c49c7f6554029e91da996e85b0d8bf3d4bb27f56456e9"
+    "sha512=5bd58aa47cf0e3f5a49a6cb8a4c3ad36a719c8d1412fddfb7c7a03c0dca6854968a20e977196bc52896d820058f7677be3dd5378d4c2c1d243a4b2c0b12b203c"
+  ]
+}
+x-commit-hash: "0d70057a3d468141f9ae04e0c7813e8279ea3bee"
