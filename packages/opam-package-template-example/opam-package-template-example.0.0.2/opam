@@ -1,0 +1,45 @@
+opam-version: "2.0"
+synopsis: "An example made with opam-package-template"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/opam-package-template-example"
+doc: "https://mbarbin.github.io/opam-package-template-example/"
+bug-reports:
+  "https://github.com/mbarbin/opam-package-template-example/issues"
+depends: [
+  "dune" {>= "3.12"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "command-unix-for-opam" {>= "0.0.1"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/opam-package-template-example.git"
+url {
+  src:
+    "https://github.com/mbarbin/opam-package-template-example/releases/download/0.0.2/opam-package-template-example-0.0.2.tbz"
+  checksum: [
+    "sha256=c6f8921974a579cda9d01b9674bc772914f77823fe70bfc624bace13bc2901a0"
+    "sha512=d40ea86d948414fa0642e5be75d49b4fff130e39d55ccbcc75608616f4a9f8dc979b206421572a9a1aeb003b337ccbfdaefb2b3d21a8cd61f125b131e6750c06"
+  ]
+}
+x-commit-hash: "aec19883666dc2f689b01b340ff397a4f0fdd80b"
