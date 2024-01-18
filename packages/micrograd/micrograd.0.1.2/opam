@@ -1,0 +1,44 @@
+opam-version: "2.0"
+synopsis:
+  "A replication of karpathy/micrograd in OCaml for educational purposes"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/micrograd"
+doc: "https://mbarbin.github.io/micrograd/"
+bug-reports: "https://github.com/mbarbin/micrograd/issues"
+depends: [
+  "dune" {>= "3.12"}
+  "ocaml" {>= "5.1"}
+  "appendable-list" {>= "v0.16" & < "v0.17"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "torch" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/micrograd.git"
+url {
+  src:
+    "https://github.com/mbarbin/micrograd/releases/download/0.1.2/micrograd-0.1.2.tbz"
+  checksum: [
+    "sha256=09bd2e2bdda3eae77179647a284805332d9450c38159fcc42019fb04bd160512"
+    "sha512=23ba510a89790d0660bc1358ea4a1dde15de269cafb3eb545611c2fe38f45ab1b1b7e2602dd534dbfb571aefe672952e730911ee337d742361173f76c7cda00f"
+  ]
+}
+x-commit-hash: "ae273251a3b5287f1c4770cf25b9fbf167a41f0c"
