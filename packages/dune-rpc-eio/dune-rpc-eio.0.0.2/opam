@@ -1,0 +1,40 @@
+opam-version: "2.0"
+synopsis: "Communicate with dune using rpc and Eio"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/dune-rpc-eio"
+doc: "https://mbarbin.github.io/dune-rpc-eio/"
+bug-reports: "https://github.com/mbarbin/dune-rpc-eio/issues"
+depends: [
+  "dune" {>= "3.12"}
+  "ocaml" {>= "5.1"}
+  "csexp" {>= "1.5.2"}
+  "dune-rpc" {>= "3.12"}
+  "eio" {>= "0.13"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/dune-rpc-eio.git"
+url {
+  src:
+    "https://github.com/mbarbin/dune-rpc-eio/releases/download/0.0.2/dune-rpc-eio-0.0.2.tbz"
+  checksum: [
+    "sha256=83cc0347bd8236316403d1ae480e477cba5bc2784c1bc5f0a361aa86eb08ab8b"
+    "sha512=62fba17ee249dfd726b3900696b2601c8b9b817b011fa07726f6e6f0b9ac8e4ba01643fda9fedb5c6684a4226d45483ae6e44603f490898861fc89675d53febf"
+  ]
+}
+x-commit-hash: "6b2a52b69e28f5d5864e8a6ebf76f5fb050945a2"
