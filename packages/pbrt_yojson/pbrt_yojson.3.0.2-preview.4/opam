@@ -1,0 +1,40 @@
+opam-version: "2.0"
+synopsis:
+  "Runtime library for ocaml-protoc to support JSON encoding/decoding"
+maintainer: ["Maxime Ransan <maxime.ransan@gmail.com>" "Simon Cruanes"]
+authors: ["Maxime Ransan <maxime.ransan@gmail.com>" "Simon Cruanes"]
+license: "MIT"
+tags: ["protobuf" "encode" "decode"]
+homepage: "https://github.com/mbarbin/ocaml-protoc"
+bug-reports: "https://github.com/mbarbin/ocaml-protoc/issues"
+depends: [
+  "dune" {>= "2.2"}
+  "ocaml" {>= "4.08"}
+  "odoc" {with-doc}
+  "yojson" {>= "1.6"}
+  "base64" {>= "3.0"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/ocaml-protoc.git"
+url {
+  src:
+    "https://github.com/mbarbin/ocaml-protoc/releases/download/3.0.2-preview.4/ocaml-protoc-3.0.2-preview.4.tbz"
+  checksum: [
+    "sha256=28bfae2cf73958b92148526ac640757d969b87c3de639fca0aa66603cde0d311"
+    "sha512=91a6e88fb106e4ddef44a673bb88e95728802e33b502837db3684d7fce98d910aaadb42b609488dc2214aa1a648926461635ef2f3d1068576cc323edde966507"
+  ]
+}
+x-commit-hash: "77765e74fc53c37f4a5070f270eebf7c3e0c7dce"
