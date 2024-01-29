@@ -1,0 +1,44 @@
+opam-version: "2.0"
+synopsis: "A library to help writting tests for gRPC Eio applications"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-rpc"
+doc: "https://mbarbin.github.io/eio-rpc/"
+bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
+depends: [
+  "dune" {>= "3.13"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "eio" {>= "0.14"}
+  "fpath" {>= "0.7.3"}
+  "grpc-client" {= version}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-rpc.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-rpc/releases/download/0.0.2/eio-rpc-0.0.2.tbz"
+  checksum: [
+    "sha256=2a1c85c8eedf431de13e0738e2e89ca84b4394bddb23c21b96e07b9e8db32c0a"
+    "sha512=35c92a68ba6922bd8ff732351f364e597d5ea0a5877543f1bf0dd8564247c565d7bf0444add80e27e8caa82f57645320ee68dd173465b2be0eb58920e12ff176"
+  ]
+}
+x-commit-hash: "7a04c61e1c5e4326e0f3878dda9c8675a99cd118"

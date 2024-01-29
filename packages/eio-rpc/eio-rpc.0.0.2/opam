@@ -1,0 +1,59 @@
+opam-version: "2.0"
+synopsis: "Tests & Examples for eio-rpc"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-rpc"
+doc: "https://mbarbin.github.io/eio-rpc/"
+bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
+depends: [
+  "dune" {>= "3.13"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "base_quickcheck" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "core_unix" {>= "v0.16" & < "v0.17"}
+  "eio" {>= "0.14"}
+  "eio-writer" {>= "0.0.3"}
+  "eio_main" {>= "0.14"}
+  "expect_test_helpers_core" {>= "v0.16" & < "v0.17"}
+  "grpc-client" {= version}
+  "grpc-server" {= version}
+  "grpc-spec" {= version}
+  "grpc-stream" {= version}
+  "pbrt" {>= "3.0.2-preview.4"}
+  "pbrt_quickcheck" {>= "3.0.2-preview.4"}
+  "pbrt_services" {>= "3.0.2-preview.4"}
+  "ppx-let-fun" {>= "0.0.2"}
+  "ppx_deriving" {>= "5.2.1"}
+  "ppx_deriving_qcheck" {>= "0.4.1"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-rpc.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-rpc/releases/download/0.0.2/eio-rpc-0.0.2.tbz"
+  checksum: [
+    "sha256=2a1c85c8eedf431de13e0738e2e89ca84b4394bddb23c21b96e07b9e8db32c0a"
+    "sha512=35c92a68ba6922bd8ff732351f364e597d5ea0a5877543f1bf0dd8564247c565d7bf0444add80e27e8caa82f57645320ee68dd173465b2be0eb58920e12ff176"
+  ]
+}
+x-commit-hash: "7a04c61e1c5e4326e0f3878dda9c8675a99cd118"
