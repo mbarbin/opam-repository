@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "Experimenting with a few additions to Eio's api"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-extended"
+doc: "https://mbarbin.github.io/eio-extended/"
+bug-reports: "https://github.com/mbarbin/eio-extended/issues"
+depends: [
+  "dune" {>= "3.13"}
+  "ocaml" {>= "5.1"}
+  "base" {with-test & >= "v0.16" & < "v0.17"}
+  "eio" {>= "0.14"}
+  "eio_main" {with-test & >= "0.14"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-extended/releases/download/0.0.2/eio-extended-0.0.2.tbz"
+  checksum: [
+    "sha256=444a11f31a2fc1125b360a255d62f22482ccc7cfe75cbc5a60dbe831d340954e"
+    "sha512=49efa9309728b89c1e09425e64dbbe9d3898b1af13d8cadd57f958835439316a1bd5606dfe387a9e9e98c19f52fa82fef6983c8d7d07304e4092dc5d517e4a53"
+  ]
+}
+x-commit-hash: "73557786d680c55e17ced60d5020fd4ce94549e6"
