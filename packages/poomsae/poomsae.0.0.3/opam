@@ -1,0 +1,42 @@
+opam-version: "2.0"
+synopsis: "Studying some Taekwondo poomsae"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/poomsae"
+doc: "https://mbarbin.github.io/poomsae/"
+bug-reports: "https://github.com/mbarbin/poomsae/issues"
+depends: [
+  "dune" {>= "3.13"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "textutils" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/poomsae.git"
+url {
+  src:
+    "https://github.com/mbarbin/poomsae/releases/download/0.0.3/poomsae-0.0.3.tbz"
+  checksum: [
+    "sha256=ee3aefed2c6d5034d798252a3d2860ab259d34dc3eddaa09688f50f5495b1943"
+    "sha512=05eb7a1630380d1d1e91012c6b3e7ec0e4abd6943bfef83aa919c694b8b70c6b5664e4a0d04968511b6ee672b5da16934bd925805ef1de3d02653f7f8389216a"
+  ]
+}
+x-commit-hash: "9dddf577d1ded006736df5ba0cec7bc14a483329"
