@@ -1,0 +1,50 @@
+opam-version: "2.0"
+synopsis: "A lib to make it easier to use generated Parsers/Lexers"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/parsing-utils"
+doc: "https://mbarbin.github.io/parsing-utils/"
+bug-reports: "https://github.com/mbarbin/parsing-utils/issues"
+depends: [
+  "dune" {>= "3.13"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "eio" {>= "0.14"}
+  "error-log" {>= "0.0.2"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "fpath-extended" {>= "0.0.3"}
+  "loc" {>= "0.0.2"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.2"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/parsing-utils.git"
+url {
+  src:
+    "https://github.com/mbarbin/parsing-utils/releases/download/0.0.3/parsing-utils-0.0.3.tbz"
+  checksum: [
+    "sha256=7008e3d504b6cf1112a5d2039d3c28dc9050a1d16a72cce2f5a6ce6a8fc2cb11"
+    "sha512=ff29ca23bfb49e7163b69a24fbea741abfccabef75319c522ba4cbb721a045ae03c1b9ff4a01acd882284cf81f6874c13d3c8475d4d7671faa55c37dae3c78f5"
+  ]
+}
+x-commit-hash: "542cb72a4171de9cc83b3c5c5c734a803ca3455d"
