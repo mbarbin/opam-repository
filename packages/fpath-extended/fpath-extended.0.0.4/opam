@@ -1,0 +1,44 @@
+opam-version: "2.0"
+synopsis: "Adding a few functions to Fpath to use alongside Base"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/fpath-extended"
+doc: "https://mbarbin.github.io/fpath-extended/"
+bug-reports: "https://github.com/mbarbin/fpath-extended/issues"
+depends: [
+  "dune" {>= "3.13"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/fpath-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/fpath-extended/releases/download/0.0.4/fpath-extended-0.0.4.tbz"
+  checksum: [
+    "sha256=a1104ca6b43ad6a3ff5e6c617c09753d46d7cf22c2db49b1764ee7e250944c70"
+    "sha512=3dc3b227f4eecf221e2ae91fac51474a44b9ac0ea6dd6255c5c4031d062aa1a70173d5ba30fef5f7c80cb3e44f10f64d961a6cdfc568862529d4bb56531f7d22"
+  ]
+}
+x-commit-hash: "8d2abff7c29065e5f8d3b0534e96976a95a0067f"
