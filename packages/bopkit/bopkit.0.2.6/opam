@@ -1,0 +1,64 @@
+opam-version: "2.0"
+synopsis: "An educational project for digital circuits programming"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/bopkit"
+doc: "https://mbarbin.github.io/bopkit/"
+bug-reports: "https://github.com/mbarbin/bopkit/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "ANSITerminal" {>= "0.8.3"}
+  "appendable-list" {>= "v0.16" & < "v0.17"}
+  "auto-format" {>= "0.0.2"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bogue" {>= "20221112"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "core_unix" {>= "v0.16" & < "v0.17"}
+  "dune-site" {>= "3.14"}
+  "error-log" {>= "0.0.4"}
+  "fpath" {>= "0.7.3"}
+  "fpath-extended" {>= "0.0.3"}
+  "graphics" {>= "5.1.2"}
+  "loc" {>= "0.0.2"}
+  "mdx" {>= "2.3"}
+  "menhir" {>= "20220210"}
+  "parsing-utils" {>= "0.0.2"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.2"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "stdune" {>= "3.14"}
+  "tsdl" {>= "0.9.8"}
+  "tsdl-image" {>= "0.6"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "--promote-install-files=false"
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+  ["dune" "install" "-p" name "--create-install-files" name]
+]
+dev-repo: "git+https://github.com/mbarbin/bopkit.git"
+url {
+  src:
+    "https://github.com/mbarbin/bopkit/releases/download/0.2.6/bopkit-0.2.6.tbz"
+  checksum: [
+    "sha256=19d5917fef9c55f1bd6ca3b77c80d68af3beab3fe3145858b34bdde07218ea81"
+    "sha512=62edc29505be65f01a1f8f2595d7e0442f3d67d8ef42aeda00337e14334249b580a85022ce93a8d93087ad405215d24e1c68ea9b97031590a03cd0cc8e0b62fb"
+  ]
+}
+x-commit-hash: "03b099f022ba610cff4ffb0e524806142a6dc706"
