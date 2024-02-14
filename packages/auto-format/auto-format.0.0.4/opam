@@ -1,0 +1,50 @@
+opam-version: "2.0"
+synopsis: "Utils to build auto format commands for custom languages"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/auto-format"
+doc: "https://mbarbin.github.io/auto-format/"
+bug-reports: "https://github.com/mbarbin/auto-format/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "eio" {>= "0.14"}
+  "eio-writer" {>= "0.0.3"}
+  "eio_main" {>= "0.14"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "fpath-extended" {>= "0.0.3"}
+  "loc" {>= "0.0.2"}
+  "parsing-utils" {>= "0.0.2"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.2"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/auto-format.git"
+url {
+  src:
+    "https://github.com/mbarbin/auto-format/releases/download/0.0.4/auto-format-0.0.4.tbz"
+  checksum: [
+    "sha256=9fdc7974b78e35f110c3f7d5e88a075d5b8404bb98b5ac1401e32afa0d450d80"
+    "sha512=9e3bfc3e29b26d6f5e7b7ac2964ddfe7fdf6cfb0e4c8443b93a4e977bdf06565bed2934414c75503f7c6168249420aea3e0a71296bc5fa01322cec76512a8502"
+  ]
+}
+x-commit-hash: "b2152fa085b79b88ad8b525c752e5ca0fbde5487"
