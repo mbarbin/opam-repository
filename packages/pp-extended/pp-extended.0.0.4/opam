@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "Adding a few functions to Pp"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/pp-extended"
+doc: "https://mbarbin.github.io/pp-extended/"
+bug-reports: "https://github.com/mbarbin/pp-extended/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "pp" {>= "1.2.0"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/pp-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/pp-extended/releases/download/0.0.4/pp-extended-0.0.4.tbz"
+  checksum: [
+    "sha256=9b8021dc40b267afe654f4a8841d55172a6bb5c114e8ca0a9af032f8cec80f46"
+    "sha512=1c1d25c809522629506383431a0ce2fada0ce80a35e0622da19e9e21fbd298231429a305d7f67ad1603ae3c9c7c6b9ba7bce401f4d0087e90f5c6961c73c04ee"
+  ]
+}
+x-commit-hash: "d86b16e6a8d63e953a313c55d4ed27883d86e1af"
