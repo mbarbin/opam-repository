@@ -1,0 +1,41 @@
+opam-version: "2.0"
+synopsis: "A datastructure supporting constant time append operations"
+maintainer: ["Mathieu Barbin"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/appendable-list"
+doc: "https://mbarbin.github.io/appendable-list/"
+bug-reports: "https://github.com/mbarbin/appendable-list/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/appendable-list.git"
+url {
+  src:
+    "https://github.com/mbarbin/appendable-list/releases/download/v0.16.2/appendable-list-v0.16.2.tbz"
+  checksum: [
+    "sha256=744d27b519785d60cc8e780781e720ce78fbd326bbe0958ff19d43595eb40f38"
+    "sha512=3c06e47b3cbc62fe4c5e47accbb1bed62406f2c4b84495d769374e2c7df250a1363c9d4325b8523e48d849504ddc90ecf3bb15fcaeb50a212eef17b9d8c0266e"
+  ]
+}
+x-commit-hash: "89292eaa2fa4822a947dbaa9b6a67dbe2ac08b2c"
