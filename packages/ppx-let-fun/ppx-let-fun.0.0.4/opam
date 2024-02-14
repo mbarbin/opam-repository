@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis:
+  "Allowing let-binding for functions whose last argument is a closure"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/ppx-let-fun"
+doc: "https://mbarbin.github.io/ppx-let-fun/"
+bug-reports: "https://github.com/mbarbin/ppx-let-fun/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {with-test & >= "v0.16" & < "v0.17"}
+  "ppxlib" {>= "0.31.0"}
+  "tilde_f" {with-test & >= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/ppx-let-fun.git"
+url {
+  src:
+    "https://github.com/mbarbin/ppx-let-fun/releases/download/0.0.4/ppx-let-fun-0.0.4.tbz"
+  checksum: [
+    "sha256=e00c19b2a64fd491474e680e2cbbd05b965ecec8ef670ab093498ad8bdb9f272"
+    "sha512=c0bb58836ee1ab5831dac451cadc1d74d236ceedee7b56c3c17520902bb053845d0e81f34d8705aada8a0e2d2d41b6e1534cfcdcf05cb820874570936f15b894"
+  ]
+}
+x-commit-hash: "36f7e4907c36e021cdfa397b779cd895c7213a6d"
