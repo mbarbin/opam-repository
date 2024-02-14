@@ -1,0 +1,45 @@
+opam-version: "2.0"
+synopsis: "A cli to run ocaml-semver functions from the command line"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/semver-command"
+doc: "https://mbarbin.github.io/semver-command/"
+bug-reports: "https://github.com/mbarbin/semver-command/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "semver" {>= "0.2.1"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/semver-command.git"
+url {
+  src:
+    "https://github.com/mbarbin/semver-command/releases/download/0.0.2/semver-command-0.0.2.tbz"
+  checksum: [
+    "sha256=4b243e5abe498447501c522242d9d86312d06a9e334b64226c936a357d3c8dd8"
+    "sha512=e7e59161dd13fbac14b6c42e2ff33aeebb2aec51e5f01c17a9036d1289381d583daa4d8733d532fbe414ac650db3c9957d3bc68f1c40f1eacc8fda09d311cf70"
+  ]
+}
+x-commit-hash: "a1e9236d18788165b84a42eaea83abf5d52254f1"
