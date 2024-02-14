@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "Representing ranges of lexing positions from parsed files"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/loc"
+doc: "https://mbarbin.github.io/loc/"
+bug-reports: "https://github.com/mbarbin/loc/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "stdune" {>= "3.14"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/loc.git"
+url {
+  src: "https://github.com/mbarbin/loc/releases/download/0.0.4/loc-0.0.4.tbz"
+  checksum: [
+    "sha256=6b8290c7d06a433f870ccfa4a66cc3b95ab975aee3a961bab2d0b49fba9b75b0"
+    "sha512=9b0f2653e3bd4a8cb97a9b29a56b15a5e6ebc5ad3e4e8883185e35c128ed92d1270bdbbb2cf78131c8851f4ebbec82c7d62c5512c08734c4ec6349e781cab22f"
+  ]
+}
+x-commit-hash: "8770fdc75b66f6bcd898027a69a59997da5c9d68"
