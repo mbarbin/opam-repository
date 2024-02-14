@@ -1,0 +1,47 @@
+opam-version: "2.0"
+synopsis: "An example of a client built with dune-rpc-eio"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/dune-rpc-eio"
+doc: "https://mbarbin.github.io/dune-rpc-eio/"
+bug-reports: "https://github.com/mbarbin/dune-rpc-eio/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "dune-rpc" {>= "3.14"}
+  "dune-rpc-eio" {= version}
+  "eio" {>= "0.14"}
+  "eio_main" {>= "0.14"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/dune-rpc-eio.git"
+url {
+  src:
+    "https://github.com/mbarbin/dune-rpc-eio/releases/download/0.0.4/dune-rpc-eio-0.0.4.tbz"
+  checksum: [
+    "sha256=9342f2792b00f0276d01ca3cadd56ab0e6c2fbd4db4103c4f6037b6edf25a5b4"
+    "sha512=fd346ec341b1dab8a63867de4b1ceee055dbaed19bc4247f048e217c9b2aec7046312652eb52c21945914f7bac30505f78311611d1816479c32e6dcc4025bd39"
+  ]
+}
+x-commit-hash: "7fb126bc38971da4888c9085549d11612105b893"
