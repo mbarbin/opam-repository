@@ -1,0 +1,45 @@
+opam-version: "2.0"
+synopsis: "An opinionated library to build gRPC Eio clients"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-rpc"
+doc: "https://mbarbin.github.io/eio-rpc/"
+bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "eio" {>= "0.14"}
+  "grpc" {>= "0.2.0-preview.2"}
+  "grpc-eio" {>= "0.2.0-preview.2"}
+  "grpc-spec" {= version}
+  "h2-eio" {>= "0.11.0"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-rpc.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-rpc/releases/download/0.0.4/eio-rpc-0.0.4.tbz"
+  checksum: [
+    "sha256=1307254fdd959b71888aedfb166e68fed00bbb1222b07887f79159358834cd06"
+    "sha512=b09be2fc2c8a4e36d8a3f38c075db26ebff353a2479b7e996440c325a3085b8d3bb758a885115f4a8bc71788ec28a85ed662ca93285f20c6870ddfc5f9caacc4"
+  ]
+}
+x-commit-hash: "bae70f587a28f88ab02554cc49fde9813c9fe3c3"
