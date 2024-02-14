@@ -1,0 +1,39 @@
+opam-version: "2.0"
+synopsis: "Repackaging core_kernel.reversed_list as a standalone package"
+maintainer: ["Mathieu Barbin"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/reversed-list"
+doc: "https://mbarbin.github.io/reversed-list/"
+bug-reports: "https://github.com/mbarbin/reversed-list/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/reversed-list.git"
+url {
+  src:
+    "https://github.com/mbarbin/reversed-list/releases/download/v0.16.3/reversed-list-v0.16.3.tbz"
+  checksum: [
+    "sha256=85eb9db8a0505ea0615238b3f23e347e021ffe592911d2e4a0a201c32dd0dda9"
+    "sha512=04c9a3d0a253a9e71f7afe7e77f39b36eb00b5a27aa93667f95237970eafefde6b58ce3b3aed240a8de59c02678346910b17e6c980278b2053046b1b8e731d86"
+  ]
+}
+x-commit-hash: "e0ad9ad7559af24ba974943cdb6b5880d3ebb3ff"
