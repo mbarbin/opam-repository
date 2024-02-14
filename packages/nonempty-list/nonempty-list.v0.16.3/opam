@@ -1,0 +1,41 @@
+opam-version: "2.0"
+synopsis:
+  "Repackaging core_kernel.nonempty_list as a standalone package for using with Base"
+maintainer: ["Mathieu Barbin"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/nonempty-list"
+doc: "https://mbarbin.github.io/nonempty-list/"
+bug-reports: "https://github.com/mbarbin/nonempty-list/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "reversed-list" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/nonempty-list.git"
+url {
+  src:
+    "https://github.com/mbarbin/nonempty-list/releases/download/v0.16.3/nonempty-list-v0.16.3.tbz"
+  checksum: [
+    "sha256=827bd232dbc2d5a9a8a2fba33a9a9fcadd7d8409778d0ca68496ed08d753270b"
+    "sha512=05799f73527f3a6e2ada759df8730ed66f1a0399e1508668a392b8c754a0502421bb6e73505a00c63a54f5dec2b049f3c841f67f78aba90a7eb3e2c06c84cd00"
+  ]
+}
+x-commit-hash: "736104ffd0478d9173e9db818acd747a0b7adcde"
