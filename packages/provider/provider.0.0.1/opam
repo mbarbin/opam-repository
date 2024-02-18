@@ -1,0 +1,42 @@
+opam-version: "2.0"
+synopsis:
+  "Parametrize your OCaml library with values that behave like objects but aren't"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/provider"
+doc: "https://mbarbin.github.io/provider/"
+bug-reports: "https://github.com/mbarbin/provider/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/provider.git"
+url {
+  src:
+    "https://github.com/mbarbin/provider/releases/download/0.0.1/provider-0.0.1.tbz"
+  checksum: [
+    "sha256=e1771143887e7090926e080f845b7a6fb85254c9feaafdee88fbd9ef50ee3cb3"
+    "sha512=5a50ed5e1fef4efcbdc64d05b8c8ad4f88a5f8bbf8fef3bf22bf17ce727fe9b61486a3cb4e9ad3471374fb282884e11d24ffb53418ca4975221b670f81fc8363"
+  ]
+}
+x-commit-hash: "2c12e9af39fc4f75c5826ca0a466d30b60e8fbc7"
