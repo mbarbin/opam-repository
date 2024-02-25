@@ -1,0 +1,46 @@
+opam-version: "2.0"
+synopsis:
+  "Run external processes in [Eio] with an api that resembles [Async_unix.Process]"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-process"
+doc: "https://mbarbin.github.io/eio-process/"
+bug-reports: "https://github.com/mbarbin/eio-process/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "eio" {>= "0.14"}
+  "eio_main" {with-test & >= "0.14"}
+  "expect_test_helpers_core" {with-test & >= "v0.16" & < "v0.17"}
+  "parsexp" {>= "v0.16" & < "v0.17"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-process.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-process/releases/download/0.0.1/eio-process-0.0.1.tbz"
+  checksum: [
+    "sha256=b8ad4b6f034910fe72b902ccb9f61a6b9b6d334ccb71e70fc3f3985c2eb92052"
+    "sha512=a9e6fa625986f1499fcd992c16455f4d1ce2761ae11a16b4049439ecae9d540ce581324d4768f8b074333b4bb27f9b1712acafeffe3872044dccfea9c78b314c"
+  ]
+}
+x-commit-hash: "baf838c5521c7251e6c02871260040e45ca6a42e"
