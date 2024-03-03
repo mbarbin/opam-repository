@@ -1,0 +1,46 @@
+opam-version: "2.0"
+synopsis: "Re-publishing [Expect_test_helpers_base] as a standalone package"
+maintainer: ["Mathieu Barbin"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/expect-test-helpers"
+doc: "https://mbarbin.github.io/expect-test-helpers/"
+bug-reports: "https://github.com/mbarbin/expect-test-helpers/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "base_quickcheck" {>= "v0.16" & < "v0.17"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_message" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "sexp_pretty" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/expect-test-helpers.git"
+url {
+  src:
+    "https://github.com/mbarbin/expect-test-helpers/releases/download/v0.16.0/expect-test-helpers-v0.16.0.tbz"
+  checksum: [
+    "sha256=9b8e52eecfc157ff3716233ed9c577861066be1a3f772dd93e01673f8e46b3b7"
+    "sha512=d4a354924a97e75ff601e90833e13fc9240a8e690cd9f8452c420d4e083f0dedfef4527ab42a1927a37efc0cf8ab147e729f8d0e89da263583215c1bc2cbae34"
+  ]
+}
+x-commit-hash: "3a45c6a0d25a8f2c2bc1321f4683afa86a61c1ef"
