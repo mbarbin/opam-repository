@@ -1,0 +1,39 @@
+opam-version: "2.0"
+synopsis:
+  "Publishing [Core.Union_find] as a standalone package to use with [Base]"
+maintainer: ["Mathieu Barbin"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/union-find"
+doc: "https://mbarbin.github.io/union-find/"
+bug-reports: "https://github.com/mbarbin/union-find/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/union-find.git"
+url {
+  src:
+    "https://github.com/mbarbin/union-find/releases/download/v0.16.0/union-find-v0.16.0.tbz"
+  checksum: [
+    "sha256=88294c47cbb4a47c291702065f0e19945eb2d44475102ea29dff36dd25d480d1"
+    "sha512=33b3a359c3ef6bfee6e9434ec4620e7061b553084d5280c39339fcb23a58f81b9daa3d7a175555579e3e807ff1726445eabd8dc300ec3d7c80c2d01c50bcea17"
+  ]
+}
+x-commit-hash: "0912b5ca7f649cd4975cd0a3233c6ef5427d0d9d"
