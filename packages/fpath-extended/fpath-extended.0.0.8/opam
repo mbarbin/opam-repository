@@ -1,0 +1,50 @@
+opam-version: "2.0"
+synopsis: "Adding a few functions to Fpath to use alongside Base"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/fpath-extended"
+doc: "https://mbarbin.github.io/fpath-extended/"
+bug-reports: "https://github.com/mbarbin/fpath-extended/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/fpath-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/fpath-extended/releases/download/0.0.8/fpath-extended-0.0.8.tbz"
+  checksum: [
+    "sha256=f84fb869840d8c3ad5f62da8042cae6144f3842c99f6fbc5730d10a22af9f649"
+    "sha512=c4d941b94bc42533fdca216515f981741e497df2b6afb5f4a5f75d5ee5d6e92638282e4ac2eb079c610e2a001d4d4fe92579295a2b8e107d1258263632d40bd8"
+  ]
+}
+x-commit-hash: "ecc68deec1b3057fa7609fb0a9b0a23ea02128b7"
