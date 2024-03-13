@@ -1,0 +1,52 @@
+opam-version: "2.0"
+synopsis:
+  "Studying various temperaments and intervals on the cello fingerboard"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/fingerboard"
+doc: "https://mbarbin.github.io/fingerboard/"
+bug-reports: "https://github.com/mbarbin/fingerboard/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect-test-helpers" {>= "v0.16" & < "v0.17"}
+  "patdiff" {>= "v0.16" & < "v0.17"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "textutils" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/fingerboard.git"
+url {
+  src:
+    "https://github.com/mbarbin/fingerboard/releases/download/0.0.5/fingerboard-0.0.5.tbz"
+  checksum: [
+    "sha256=27ffd34940a845a35e9af6f7fa71ef0c1805c9fdea0b455bd2474b9e84dc84f0"
+    "sha512=f13a488f995327f07e7c03ce883efb91a620cde26e1d659c844a2401747fb8414f58a439ef8477d60c048ba0883f0641f679547979d0b0f6f4e11511121a77e0"
+  ]
+}
+x-commit-hash: "c794d02b530b613c243d205114acd3cc62e63d49"
