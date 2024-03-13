@@ -1,0 +1,52 @@
+opam-version: "2.0"
+synopsis: "An example made with opam-package-template"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/opam-package-template-example"
+doc: "https://mbarbin.github.io/opam-package-template-example/"
+bug-reports:
+  "https://github.com/mbarbin/opam-package-template-example/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/opam-package-template-example.git"
+url {
+  src:
+    "https://github.com/mbarbin/opam-package-template-example/releases/download/0.0.5/opam-package-template-example-0.0.5.tbz"
+  checksum: [
+    "sha256=008782d9741250e91cdd2db6cccff23c6ac6eb35b1739c39b152d1043feb6702"
+    "sha512=34bfb377f4ff2fc28b490ef1f9db737718e9919dc1c391b8a4608a2961aa47b46a9cca9c0e101fd851d824557c7f4d43ce044dc79c02bee5bdcaa9c1f3c2f5b4"
+  ]
+}
+x-commit-hash: "828633310fc996f66b4d203f3f15b39bf1e53809"
