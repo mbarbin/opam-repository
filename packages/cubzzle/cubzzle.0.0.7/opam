@@ -1,0 +1,54 @@
+opam-version: "2.0"
+synopsis: "Solver for a wooden cube puzzle"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/cubzzle"
+doc: "https://mbarbin.github.io/cubzzle/"
+bug-reports: "https://github.com/mbarbin/cubzzle/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "graphics" {>= "5.1.2"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_fields_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/cubzzle.git"
+url {
+  src:
+    "https://github.com/mbarbin/cubzzle/releases/download/0.0.7/cubzzle-0.0.7.tbz"
+  checksum: [
+    "sha256=e103eccfa54745e340b2ddc178fc714422b669ecdc9f676d2068a8d660b9ad63"
+    "sha512=cd2640bc63851d3acf0f64da49581173d23d95314a3383e02ee75c168f70d4f03f0ebcf9cca1ad0cd7c3fec664618440963dc091d4115c63839381f985c17a80"
+  ]
+}
+x-commit-hash: "6bdbaf2b785e48d794b4d056243eac6960ebedb9"
