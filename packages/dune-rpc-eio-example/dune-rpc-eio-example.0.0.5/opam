@@ -1,0 +1,54 @@
+opam-version: "2.0"
+synopsis: "An example of a client built with dune-rpc-eio"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/dune-rpc-eio"
+doc: "https://mbarbin.github.io/dune-rpc-eio/"
+bug-reports: "https://github.com/mbarbin/dune-rpc-eio/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "dune-rpc" {>= "3.14"}
+  "dune-rpc-eio" {= version}
+  "eio" {>= "1.0"}
+  "eio_main" {>= "1.0"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/dune-rpc-eio.git"
+url {
+  src:
+    "https://github.com/mbarbin/dune-rpc-eio/releases/download/0.0.5/dune-rpc-eio-0.0.5.tbz"
+  checksum: [
+    "sha256=8246696440151ab9abf2c33ed726c839af27f236e8a84ed1fa0070d6b98573e3"
+    "sha512=c58fdf022c13f6798cc88facdffdf25488aa9db96ef5217f24e13946b894a67fe36bd4661841296338f4c60490ea425791fc344ee409af29e1370bff43b3e40b"
+  ]
+}
+x-commit-hash: "89ec74bc13f873d7bf396534abb4546fc2a6b48a"
