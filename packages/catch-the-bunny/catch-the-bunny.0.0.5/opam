@@ -1,0 +1,49 @@
+opam-version: "2.0"
+synopsis: "Resolving a small logic puzzle"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/catch-the-bunny"
+doc: "https://mbarbin.github.io/catch-the-bunny/"
+bug-reports: "https://github.com/mbarbin/catch-the-bunny/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/catch-the-bunny.git"
+url {
+  src:
+    "https://github.com/mbarbin/catch-the-bunny/releases/download/0.0.5/catch-the-bunny-0.0.5.tbz"
+  checksum: [
+    "sha256=3f52bca258b36f9ee95afdf29d30c2c4ffa1d7d50e8556335caeec5df0ddf164"
+    "sha512=e62ee5dd757f970c387d8870b974df02631815a5c93dc098618faa917aadb8e81eb723693214d5c2d622cbdeb49c2b1283ed34ff638f1aac8235946c976084d8"
+  ]
+}
+x-commit-hash: "95c5a0597d41e3ffa167afcf472fa7c8cd780477"
