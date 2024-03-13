@@ -1,0 +1,56 @@
+opam-version: "2.0"
+synopsis: "Reporting located errors and warnings"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/error-log"
+doc: "https://mbarbin.github.io/error-log/"
+bug-reports: "https://github.com/mbarbin/error-log/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "core_unix" {with-test & >= "v0.16" & < "v0.17"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "loc" {>= "0.0.2"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.2"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "stdune" {>= "3.14"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/error-log.git"
+url {
+  src:
+    "https://github.com/mbarbin/error-log/releases/download/0.0.6/error-log-0.0.6.tbz"
+  checksum: [
+    "sha256=25d03e469faf4119a6408a283cc306f22cd5d0ecd9da10544eeca3b0c17e48bb"
+    "sha512=18b2c93bd748432979932ea90cc677f84961749b13a90c36446357770ee0e0a304cf98cf85919a1dd620f4f428b8ed98169894113f9981bd8193fc58b4034ca9"
+  ]
+}
+x-commit-hash: "b435dd9b54e799f0b3b656caf659eefec2d01ee9"
