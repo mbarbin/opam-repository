@@ -1,0 +1,47 @@
+opam-version: "2.0"
+synopsis:
+  "Allowing let-binding for functions whose last argument is a closure"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/ppx-let-fun"
+doc: "https://mbarbin.github.io/ppx-let-fun/"
+bug-reports: "https://github.com/mbarbin/ppx-let-fun/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_here" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_let" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {with-test & >= "v0.16" & < "v0.17"}
+  "ppxlib" {>= "0.31.0"}
+  "tilde_f" {with-test & >= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/ppx-let-fun.git"
+url {
+  src:
+    "https://github.com/mbarbin/ppx-let-fun/releases/download/0.0.5/ppx-let-fun-0.0.5.tbz"
+  checksum: [
+    "sha256=1bd21030921badb3b5c6a71a07a40e44453b43ebb7b3391019f34cfba823da34"
+    "sha512=24bc88142d66526ced1ccc5d6d991a94cdbb13fe57a37368aa489e61486442a92e442beef617faaa0190def5753c7076e619461dbf928ae0d9f5b478e96208bb"
+  ]
+}
+x-commit-hash: "f3e554abd0dd9ecfcdd8bd815847e519f7a0a441"
