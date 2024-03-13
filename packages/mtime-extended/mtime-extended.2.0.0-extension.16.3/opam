@@ -1,0 +1,52 @@
+opam-version: "2.0"
+synopsis: "Adding a few functions to Mtime to use alongside Base"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/mtime-extended"
+doc: "https://mbarbin.github.io/mtime-extended/"
+bug-reports: "https://github.com/mbarbin/mtime-extended/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bignum" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "mtime" {>= "2.0.0"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/mtime-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/mtime-extended/releases/download/2.0.0-extension.16.3/mtime-extended-2.0.0-extension.16.3.tbz"
+  checksum: [
+    "sha256=dfcf933a72fbc44c75a24fc3830bb9208819d16473a7618c7410ed4e7070a21f"
+    "sha512=d7b973209362f318fc6a48ca86abff5bd45543b650f30ee901b72c70a29a550dee23e0966cc2456c0ff893828728c1bfbb0e1ad64d3866b27e4f3a82789e65a8"
+  ]
+}
+x-commit-hash: "93a3db445ad940a2ccce2f6d2e6930e66511af6c"
