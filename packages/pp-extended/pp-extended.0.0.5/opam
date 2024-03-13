@@ -1,0 +1,50 @@
+opam-version: "2.0"
+synopsis: "Adding a few functions to Pp"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/pp-extended"
+doc: "https://mbarbin.github.io/pp-extended/"
+bug-reports: "https://github.com/mbarbin/pp-extended/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "pp" {>= "1.2.0"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/pp-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/pp-extended/releases/download/0.0.5/pp-extended-0.0.5.tbz"
+  checksum: [
+    "sha256=828a5cffb8d3f9ef68dcbebb9731cc9040413146a6f8bc4121214572708010d3"
+    "sha512=e294c3477816f56dcd807219ec59b8d39791e8f36915d6504b325d45f401bef54e26e7f2e1e3f15df8260c454d48fc294a80c2ec432c9fa02850a4ebfead0918"
+  ]
+}
+x-commit-hash: "53ecbaa3ec5be3bc0e9c054c269795ba6c7fb4fd"
