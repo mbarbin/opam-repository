@@ -1,0 +1,74 @@
+opam-version: "2.0"
+synopsis: "An educational project for digital circuits programming"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/bopkit"
+doc: "https://mbarbin.github.io/bopkit/"
+bug-reports: "https://github.com/mbarbin/bopkit/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "ANSITerminal" {>= "0.8.3"}
+  "appendable-list" {>= "v0.16" & < "v0.17"}
+  "auto-format" {>= "0.0.5"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "base_quickcheck" {>= "v0.16" & < "v0.17"}
+  "bogue" {>= "20221112"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "core_unix" {>= "v0.16" & < "v0.17"}
+  "dune-site" {>= "3.14"}
+  "error-log" {>= "0.0.4"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.0.9"}
+  "graphics" {>= "5.1.2"}
+  "loc" {>= "0.0.2"}
+  "mdx" {>= "2.4"}
+  "menhir" {>= "20220210"}
+  "parsing-utils" {>= "0.0.2"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.2"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_fields_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "stdio" {>= "v0.16" & < "v0.17"}
+  "stdune" {>= "3.14"}
+  "tsdl" {>= "0.9.8"}
+  "tsdl-image" {>= "0.6"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "--promote-install-files=false"
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+  ["dune" "install" "-p" name "--create-install-files" name]
+]
+dev-repo: "git+https://github.com/mbarbin/bopkit.git"
+url {
+  src:
+    "https://github.com/mbarbin/bopkit/releases/download/0.2.7/bopkit-0.2.7.tbz"
+  checksum: [
+    "sha256=aa6c68fe8cfcd24269e6af6fabcc720130caf5a6eacc4a40e90914d686f32be2"
+    "sha512=eac72d3795fc32b12f44bdf8c45822639e9248cb2531ddb0f722836ade0e60e30a8b0814706c878dfdc1852215640f0beaeb04175546be113c18ed6e114d8396"
+  ]
+}
+x-commit-hash: "98214b391ecf2b0631bac97700c0eb6317f9d05b"
