@@ -1,0 +1,51 @@
+opam-version: "2.0"
+synopsis: "A microtonal geography of the cello fingerboard"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "AGPL-3.0-or-later"
+homepage: "https://github.com/mbarbin/fingerboard"
+doc: "https://mbarbin.github.io/fingerboard/"
+bug-reports: "https://github.com/mbarbin/fingerboard/issues"
+depends: [
+  "dune" {>= "3.14"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect-test-helpers" {>= "v0.16" & < "v0.17"}
+  "patdiff" {>= "v0.16" & < "v0.17"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "textutils" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/fingerboard.git"
+url {
+  src:
+    "https://github.com/mbarbin/fingerboard/releases/download/0.0.6/fingerboard-0.0.6.tbz"
+  checksum: [
+    "sha256=0f9cbef455cf26aca26b704ea02e6e19a6a6b2c18e3c66741efbf35f79723627"
+    "sha512=419eddf3b0bc3fd38edb3ae485e54bfedb9c507d5d4b1aae964c6a18af3729fc6cc7795ebda669f79ffcd5c5a7f052128f2cb32f04e40ab08423f342c9a16451"
+  ]
+}
+x-commit-hash: "2c1bd84ca2e3e5947cd55ceb350ee94fae217161"
