@@ -1,0 +1,53 @@
+opam-version: "2.0"
+synopsis: "A graphical debugger for visa assembly programs (bopkit)"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/visa-debugger"
+doc: "https://mbarbin.github.io/visa-debugger/"
+bug-reports: "https://github.com/mbarbin/visa-debugger/issues"
+depends: [
+  "dune" {>= "3.15"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.16" & < "v0.17"}
+  "bogue" {>= "20221112"}
+  "bopkit" {>= "0.2.7"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.16" & < "v0.17"}
+  "core_unix" {>= "v0.16" & < "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.0.9"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/visa-debugger.git"
+url {
+  src:
+    "https://github.com/mbarbin/visa-debugger/releases/download/0.1.0/visa-debugger-0.1.0.tbz"
+  checksum: [
+    "sha256=d318abf8a706f44537f9d6c5deb71e080879496fb841ede536c6b6d501b46fa4"
+    "sha512=2833e09dc8aef622ca24cf8c34a1baafbde0b2e2e4729ec92aa418d31289b25690334253b500a2942c00729b37070cce891fa90adac1a77c32910da68c599796"
+  ]
+}
+x-commit-hash: "c33cb67872555a56abb0c9e3da10dcd4922a1c5a"
