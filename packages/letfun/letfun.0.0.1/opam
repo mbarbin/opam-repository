@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "Use let-binding with functions whose last argument is a closure"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/letfun"
+doc: "https://mbarbin.github.io/letfun/"
+bug-reports: "https://github.com/mbarbin/letfun/issues"
+depends: [
+  "dune" {>= "3.15"}
+  "ocaml" {>= "5.1"}
+  "base" {with-test & >= "v0.16" & < "v0.17"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "expect-test-helpers" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_js_style" {dev & >= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {with-test & >= "v0.16" & < "v0.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/letfun.git"
+url {
+  src:
+    "https://github.com/mbarbin/letfun/releases/download/0.0.1/letfun-0.0.1.tbz"
+  checksum: [
+    "sha256=b3d9d35f17619cb2c6998c504512a75e021c42a649ddf8610b51ca3a439cdb0a"
+    "sha512=d7778bf5bd71b800d5b4eaf3c9392ac2e09a874ff8ee3b442227ae50ce7feedff6ac9e8258db9716ab50659eed7b4098ceccf61ed7f9344f28829394693f549c"
+  ]
+}
+x-commit-hash: "61e640ac322ca831943d288febc3bac9ec949683"
