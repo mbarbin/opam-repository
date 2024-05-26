@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis:
+  "Publishing [Core.Doubly_linked] as a standalone package to use with [Base]"
+maintainer: ["Mathieu Barbin"]
+authors: ["Jane Street Group, LLC"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/doubly-linked"
+doc: "https://mbarbin.github.io/doubly-linked/"
+bug-reports: "https://github.com/mbarbin/doubly-linked/issues"
+depends: [
+  "dune" {>= "3.15"}
+  "ocaml" {>= "5.1"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "sexplib" {>= "v0.17" & < "v0.18"}
+  "union-find" {>= "v0.17" & < "v0.18"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/doubly-linked.git"
+url {
+  src:
+    "https://github.com/mbarbin/doubly-linked/releases/download/v0.17.0/doubly-linked-v0.17.0.tbz"
+  checksum: [
+    "sha256=96e2377a10f2814ef10385240cb56841b7037760c4327b3f901efc8229c2ae4f"
+    "sha512=0fd47b1ea72b1b83ddfa7ce6e29f094f427da14ee402106f4de08cc2d04a97c63594408024629bcab6e5c47f652bf43c25c6c2b3da10e4d3940bc56049e82c98"
+  ]
+}
+x-commit-hash: "476712edc6092024f8edff1a22ffa1661e3d5393"
