@@ -1,0 +1,53 @@
+opam-version: "2.0"
+synopsis: "A cli to run ocaml-semver functions from the command line"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/semver-command"
+doc: "https://mbarbin.github.io/semver-command/"
+bug-reports: "https://github.com/mbarbin/semver-command/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "command-unix-for-opam" {>= "0.0.2"}
+  "core" {>= "v0.17" & < "v0.18"}
+  "expect-test-helpers" {with-test & >= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {with-test & >= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "semver" {>= "0.2.1"}
+  "stdio" {>= "v0.17" & < "v0.18"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/semver-command.git"
+url {
+  src:
+    "https://github.com/mbarbin/semver-command/releases/download/0.0.4/semver-command-0.0.4.tbz"
+  checksum: [
+    "sha256=65e2cc965167546e19b75f7b0b5b9e73ff402bbf09f23522f400d924ce4635b3"
+    "sha512=5cfc026f3ef1cf92bce16327f7e3269dbe54370fdd973dc41ee2e9102b180951f26c2902cfe73e71237d7257ceb6348519760fcd07f769b9819025d86810b85c"
+  ]
+}
+x-commit-hash: "11441e50e633afeda554b92b593d87d02b19f28f"
