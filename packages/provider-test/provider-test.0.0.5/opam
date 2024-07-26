@@ -1,0 +1,53 @@
+opam-version: "2.0"
+synopsis: "Test suite for provider library"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "ISC"
+homepage: "https://github.com/mbarbin/provider"
+doc: "https://mbarbin.github.io/provider/"
+bug-reports: "https://github.com/mbarbin/provider/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "eio" {>= "1.0"}
+  "eio_main" {>= "1.0"}
+  "expect-test-helpers" {>= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "provider" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/provider.git"
+url {
+  src:
+    "https://github.com/mbarbin/provider/releases/download/0.0.5/provider-0.0.5.tbz"
+  checksum: [
+    "sha256=22c535098ea9bf29c900df0a1b7b9ed4d5be679ff40ab89a8d681ee48c1edcec"
+    "sha512=84c72e2df3a3f0e571f749e3f3e8bc7e1923718ba33c42c6d0ba8aac256df49773fc8b7c718deac450ef136b1cd98d726974e80cbfa963130b1e7db4b4612724"
+  ]
+}
+x-commit-hash: "e11eebc002a2f6cc68b465b9873abfab21aaf700"
