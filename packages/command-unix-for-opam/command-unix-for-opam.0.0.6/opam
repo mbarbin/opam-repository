@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "Improve Core Commands distributed with opam"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/command-unix-for-opam"
+doc: "https://mbarbin.github.io/command-unix-for-opam/"
+bug-reports: "https://github.com/mbarbin/command-unix-for-opam/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "core" {>= "v0.17" & < "v0.18"}
+  "core_unix" {>= "v0.17" & < "v0.18"}
+  "dune-build-info" {>= "3.16"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/command-unix-for-opam.git"
+url {
+  src:
+    "https://github.com/mbarbin/command-unix-for-opam/releases/download/0.0.6/command-unix-for-opam-0.0.6.tbz"
+  checksum: [
+    "sha256=4f3cb2d467f8a50cd6f8a6a1f5f57e26c6dd2ae289843d8c1b83398f4190bf56"
+    "sha512=a0c7592664d0bccf2f97e5553c2b058639e918a9d5d0b68fccfda9a7f4b445312b659b25505f428e37e5991f87188bd8952230c3130e1b9a87af7fd1952ff258"
+  ]
+}
+x-commit-hash: "ad49712e5b6ae1b48ec92f87dabc219e7a548eff"
