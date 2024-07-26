@@ -1,0 +1,51 @@
+opam-version: "2.0"
+synopsis: "Experimenting with a few additions to Eio's api"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-extended"
+doc: "https://mbarbin.github.io/eio-extended/"
+bug-reports: "https://github.com/mbarbin/eio-extended/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {with-test & >= "v0.17" & < "v0.18"}
+  "eio" {>= "1.0"}
+  "eio_main" {with-test & >= "1.0"}
+  "expect-test-helpers" {with-test & >= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {with-test & >= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-extended/releases/download/0.0.5/eio-extended-0.0.5.tbz"
+  checksum: [
+    "sha256=8bec056aacd43958ead5075c8460d9c7276a9c76dc6d8d90c7dec84299660ce7"
+    "sha512=16c1767e8cc0caa203ffec9d76f2df2405d2885b94616f26d9b5d9f4b5d2ac48aea53ec620cbe3ed028d2835d58dfe9e376678a7406e8214783957e066f4f5df"
+  ]
+}
+x-commit-hash: "056fa0a1769b5a43a5069637fd8abc1d384e741e"
