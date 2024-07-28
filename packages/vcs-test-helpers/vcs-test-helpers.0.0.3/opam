@@ -1,0 +1,52 @@
+opam-version: "2.0"
+synopsis: "Helper library to write tests using vcs"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/vcs"
+doc: "https://mbarbin.github.io/vcs/"
+bug-reports: "https://github.com/mbarbin/vcs/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "eio" {>= "1.0"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.0.9"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "provider" {>= "0.0.4"}
+  "vcs-private-libs-base" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/vcs.git"
+url {
+  src: "https://github.com/mbarbin/vcs/releases/download/0.0.3/vcs-0.0.3.tbz"
+  checksum: [
+    "sha256=4e35b3d145d0fd4abb2788bd33b42f875d9c035c8c9c5f8ca169b20e95ec37eb"
+    "sha512=65bc8c467cc60e18519a8a32cd03e4d19ccb2ee944a5f253d5b9fb78cc58c01d7b1eefb3232afba69fc41373896fb3fd5f3a00ad4e56d94b87f3bc8ee1748cb2"
+  ]
+}
+x-commit-hash: "8f2e0c82dc15c6ba52b181f235a3049849e1ddd2"
