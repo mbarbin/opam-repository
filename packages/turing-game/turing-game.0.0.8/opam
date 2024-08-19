@@ -1,0 +1,57 @@
+opam-version: "2.0"
+synopsis: "A bot that can play a board game called Turing Machine"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/turing-game"
+doc: "https://mbarbin.github.io/turing-game/"
+bug-reports: "https://github.com/mbarbin/turing-game/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "cmdliner" {= "1.3.0"}
+  "commandlang" {>= "0.0.1~preview-0.1"}
+  "commandlang-to-cmdliner" {>= "0.0.1~preview-0.1"}
+  "expect-test-helpers" {with-test & >= "v0.17" & < "v0.18"}
+  "nonempty-list" {>= "v0.17" & < "v0.18"}
+  "patdiff" {>= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {with-test & >= "v0.17" & < "v0.18"}
+  "ppx_fields_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "reversed-list" {>= "v0.17" & < "v0.18"}
+  "stdio" {>= "v0.17" & < "v0.18"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/turing-game.git"
+url {
+  src:
+    "https://github.com/mbarbin/turing-game/releases/download/0.0.8/turing-game-0.0.8.tbz"
+  checksum: [
+    "sha256=10facdc08721bec0355eb1277e85493b3e0aa5a77a99d38e46ee1881c15f911f"
+    "sha512=0974e68e2dffb9000eeaeb393e15298aaefdb11ea482ee2e804977d39d0b4b6c9fc7c89b5f8acde9ce5f951b756ab73ad3a9a3a3b50cc14e3141f1e7db1efd1c"
+  ]
+}
+x-commit-hash: "44f59126dca95a0fd3e8a33f6cc334779f4eab78"
