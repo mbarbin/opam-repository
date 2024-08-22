@@ -1,0 +1,42 @@
+opam-version: "2.0"
+synopsis: "Error Handling Standard for Commandlang CLIs"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/commandlang"
+doc: "https://mbarbin.github.io/commandlang/"
+bug-reports: "https://github.com/mbarbin/commandlang/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "commandlang" {= version}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "sexplib0" {>= "v0.17" & < "v0.18"}
+  "stdune" {>= "3.16"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/commandlang.git"
+url {
+  src:
+    "https://github.com/mbarbin/commandlang/releases/download/0.0.1/commandlang-0.0.1.tbz"
+  checksum: [
+    "sha256=571abbce9a6ba74dcbe4a706a4da55bd04f7600c217a64b5d71f56771fa65ad0"
+    "sha512=8fc54903022853b19498dbf8659112f9f08011e9ae6b03390c6c289c76a039a795945b7348fd237cdbcc9ae0cdafded10e0eed3878656ecf66474c1f008dab51"
+  ]
+}
+x-commit-hash: "0eb367557ba05fcaca1eb12e430292e7a2c8f4cb"
