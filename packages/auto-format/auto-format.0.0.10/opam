@@ -1,0 +1,59 @@
+opam-version: "2.0"
+synopsis: "Utils to build auto format commands for custom languages"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/auto-format"
+doc: "https://mbarbin.github.io/auto-format/"
+bug-reports: "https://github.com/mbarbin/auto-format/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "commandlang" {>= "0.0.1"}
+  "eio" {>= "1.0"}
+  "eio-writer" {>= "0.0.3"}
+  "eio_main" {>= "1.0"}
+  "expect-test-helpers" {with-test & >= "v0.17" & < "v0.18"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.0.9"}
+  "loc" {>= "0.0.2"}
+  "parsing-utils" {>= "0.0.7"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.2"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {with-test & >= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/auto-format.git"
+url {
+  src:
+    "https://github.com/mbarbin/auto-format/releases/download/0.0.10/auto-format-0.0.10.tbz"
+  checksum: [
+    "sha256=4ad2fa1fd34ed57fcf3c8754b9455e7b2615f9a7483cd382e6399e4d0d96b642"
+    "sha512=d73c7989bab92d585391eed365e66cbc26e69ef381c2edb4d1bdc426922ddbedd3112e5b73ec3935a41f4ae0d2da944858686feb29561c4fa84c5693cf0298cb"
+  ]
+}
+x-commit-hash: "5cd8a5354051523e37c6b8d6df5c39d036ac96fe"
