@@ -53,8 +53,8 @@ url {
   src:
     "https://github.com/mbarbin/commandlang/releases/download/0.0.1/commandlang-0.0.1.tbz"
   checksum: [
-    "sha256=571abbce9a6ba74dcbe4a706a4da55bd04f7600c217a64b5d71f56771fa65ad0"
-    "sha512=8fc54903022853b19498dbf8659112f9f08011e9ae6b03390c6c289c76a039a795945b7348fd237cdbcc9ae0cdafded10e0eed3878656ecf66474c1f008dab51"
+    "sha256=693ccdd580af9b18ecda1e341914689d3f8176b81f44cadfa0b52a05a3d19a94"
+    "sha512=ed490577d718a1657e817c18e4234ae46dad0066fcc5a2fd954aca5da1dbcef211c1d6e93a343d9ad2d4b9e48d1350fd4cdfefc33ac535e1588150ff60d4baee"
   ]
 }
-x-commit-hash: "0eb367557ba05fcaca1eb12e430292e7a2c8f4cb"
+x-commit-hash: "a6c294fab1b04edaf22f9f24f081196c2ff11052"
