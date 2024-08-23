@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "A handler for Err0 that works well with commandlang"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/commandlang"
+doc: "https://mbarbin.github.io/commandlang/"
+bug-reports: "https://github.com/mbarbin/commandlang/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "bisect_ppx" {dev & >= "2.8.3"}
+  "commandlang" {= version}
+  "err0" {= version}
+  "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
+  "sexplib0" {>= "v0.17" & < "v0.18"}
+  "stdune" {>= "3.16"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/commandlang.git"
+url {
+  src:
+    "https://github.com/mbarbin/commandlang/releases/download/0.0.2/commandlang-0.0.2.tbz"
+  checksum: [
+    "sha256=9fb5be052009668b24ecfa318b5841bae98630a4198e29d8cc9a05a74f25eeb7"
+    "sha512=115cdb960f6dae5495efe0c28968ed4c8180b5949a76fa52d0b2f3052be08fd4ff0ec5aa110050ca4e5c6bbba9be5d9665abd8f74ba169313cf2fdbd04c5a2ce"
+  ]
+}
+x-commit-hash: "3e336ad5e8840052a5d6c4fd99c130ea8ee93b24"
