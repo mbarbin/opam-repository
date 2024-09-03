@@ -1,0 +1,53 @@
+opam-version: "2.0"
+synopsis: "Tests for loc"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/loc"
+doc: "https://mbarbin.github.io/loc/"
+bug-reports: "https://github.com/mbarbin/loc/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "ocamlformat" {with-dev-setup & = "0.26.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "bisect_ppx" {with-dev-setup & >= "2.8.3"}
+  "expect_test_helpers_core" {>= "v0.17" & < "v0.18"}
+  "fpath" {>= "0.7.3"}
+  "loc" {= version}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {with-dev-setup & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "stdune" {>= "3.16"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/loc.git"
+url {
+  src: "https://github.com/mbarbin/loc/releases/download/0.2.0/loc-0.2.0.tbz"
+  checksum: [
+    "sha256=30e0468f1a2876accef1aacf8441faac88fa64feb8653a1496c47dd56a8aff29"
+    "sha512=a8ee464212811bdd71be86cd5a174ffa337e816ec23323dd9268dd87603ae83f0593ac0b2c46d9b9a5c49cc5596670434dd99f8f2dcd54754ec90c70c30db320"
+  ]
+}
+x-commit-hash: "25a3faf3069e13575519dd498f97c9fba3a93bb8"
