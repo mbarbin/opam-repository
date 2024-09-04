@@ -1,0 +1,40 @@
+opam-version: "2.0"
+synopsis:
+  "Adding sexp converters to Fpath as well as Abs and Rel path modules"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/fpath-base"
+doc: "https://mbarbin.github.io/fpath-base/"
+bug-reports: "https://github.com/mbarbin/fpath-base/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "fpath" {>= "0.7.3"}
+  "sexplib0" {>= "v0.17" & < "v0.18"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/fpath-base.git"
+url {
+  src:
+    "https://github.com/mbarbin/fpath-base/releases/download/0.2.0/fpath-base-0.2.0.tbz"
+  checksum: [
+    "sha256=cf42be5cac7537819b56c5e26ee6a09778b2cb06b23f58fd66c6dd1b8db087d6"
+    "sha512=24c78289833b3da29f173434f04d7820c2d0180b407f79d2f582e84bd0f006d57bba93f9fdf9aea51d097fe2db6a31374900a6d5e149366c3c8f74d78a94cc23"
+  ]
+}
+x-commit-hash: "8169458e307d47a0d28ed4552d9c4a8f5d4b6b11"
