@@ -1,0 +1,65 @@
+opam-version: "2.0"
+synopsis: "Tests for [Auto-format]"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/auto-format"
+doc: "https://mbarbin.github.io/auto-format/"
+bug-reports: "https://github.com/mbarbin/auto-format/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "ocamlformat" {with-dev-setup & = "0.26.2"}
+  "auto-format" {= version}
+  "base" {>= "v0.17" & < "v0.18"}
+  "cmdlang" {>= "0.0.4"}
+  "comments-parser" {>= "0.2.0"}
+  "eio" {>= "1.0"}
+  "eio-writer" {>= "0.0.3"}
+  "eio_main" {>= "1.0"}
+  "err" {>= "0.0.4"}
+  "err-cli" {>= "0.0.4"}
+  "expect_test_helpers_core" {>= "v0.17" & < "v0.18"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.2.0"}
+  "loc" {>= "0.2.0"}
+  "parsing-utils" {>= "0.2.0"}
+  "parsing-utils-eio" {>= "0.2.0"}
+  "pp" {>= "1.2.0"}
+  "pp-extended" {>= "0.0.2"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {with-dev-setup & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/auto-format.git"
+url {
+  src:
+    "https://github.com/mbarbin/auto-format/releases/download/0.0.12/auto-format-0.0.12.tbz"
+  checksum: [
+    "sha256=40925a22b9d1d4f71a91dae0a3ab2e9f4def2fda9ca80da2dc9208c6e27b050a"
+    "sha512=09182f3d80f73dfc09c9ae8d668011afb5f95e25dd60931e4274121fc1ede87ebee9586a49dda8703a34b30dff8a38a065c907843081a629d3496f34406655e6"
+  ]
+}
+x-commit-hash: "ce6b53b13772d70ccce04231a62bb5a225f9bdbf"
