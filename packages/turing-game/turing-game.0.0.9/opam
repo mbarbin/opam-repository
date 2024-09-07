@@ -1,0 +1,54 @@
+opam-version: "2.0"
+synopsis: "A bot that can play a board game called Turing Machine"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/turing-game"
+doc: "https://mbarbin.github.io/turing-game/"
+bug-reports: "https://github.com/mbarbin/turing-game/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "cmdlang" {>= "0.0.4"}
+  "cmdlang-to-cmdliner" {>= "0.0.4"}
+  "cmdliner" {= "1.3.0"}
+  "nonempty-list" {>= "v0.17" & < "v0.18"}
+  "patdiff" {>= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_fields_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "reversed-list" {>= "v0.17" & < "v0.18"}
+  "stdio" {>= "v0.17" & < "v0.18"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/turing-game.git"
+url {
+  src:
+    "https://github.com/mbarbin/turing-game/releases/download/0.0.9/turing-game-0.0.9.tbz"
+  checksum: [
+    "sha256=33d05945fddcb9ad123415555662824fe8c683c3ff2a0fc08f64071bc15336bd"
+    "sha512=a46920ec0bf2610617291d18f83fcb02572b7554c90276975817d3540e45236724bab2203732d64217a09d9ca1639c32b4c1ee46944369a6d9f2bbdba2c39d74"
+  ]
+}
+x-commit-hash: "f5c8a977fb522c5e7e97b1d283b6202a3bf23cdf"
