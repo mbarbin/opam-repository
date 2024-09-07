@@ -1,0 +1,40 @@
+opam-version: "2.0"
+synopsis: "Convert cmdlang Parsers to climate"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/cmdlang"
+doc: "https://mbarbin.github.io/cmdlang/"
+bug-reports: "https://github.com/mbarbin/cmdlang/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "climate" {= "0.0.1~preview-0.1"}
+  "cmdlang" {= version}
+  "err" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/cmdlang.git"
+url {
+  src:
+    "https://github.com/mbarbin/cmdlang/releases/download/0.0.4/cmdlang-0.0.4.tbz"
+  checksum: [
+    "sha256=37427602dd442b4dbd6b253879fde7eff08611c10ee75c385bc0957b13694d01"
+    "sha512=ce7c4dfdbeed580ffad02b6780b784ac2efedd76bc7e96f8a0c4b085d355328698a35a623aadad4a60c3a2311247d9a452795c5b88681f2c6d6797d8e5806f45"
+  ]
+}
+x-commit-hash: "527629da8eed6e895623a8550974bd31eba4bcf5"
