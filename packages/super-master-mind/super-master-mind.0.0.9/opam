@@ -1,0 +1,56 @@
+opam-version: "2.0"
+synopsis: "A solver for the super master mind game"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/super-master-mind"
+doc: "https://mbarbin.github.io/super-master-mind/odoc/"
+bug-reports: "https://github.com/mbarbin/super-master-mind/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "cmdlang" {>= "0.0.4"}
+  "cmdlang-to-cmdliner" {>= "0.0.4"}
+  "cmdliner" {= "1.3.0"}
+  "domainslib" {>= "0.5"}
+  "nonempty-list" {>= "v0.17" & < "v0.18"}
+  "ocaml-embed-file" {>= "v0.17" & < "v0.18"}
+  "parsexp" {>= "v0.17" & < "v0.18"}
+  "patdiff" {>= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "progress" {>= "0.3.0"}
+  "stdio" {>= "v0.17" & < "v0.18"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/super-master-mind.git"
+url {
+  src:
+    "https://github.com/mbarbin/super-master-mind/releases/download/0.0.9/super-master-mind-0.0.9.tbz"
+  checksum: [
+    "sha256=403d850fac6f019cbbc529e106f3f8c3ac8e885a57aae44868969832b35938b8"
+    "sha512=2b62f07423d69266c984407c7e4756a88964849a641b0b4c9f1ed4cbb097b175029d8bc07d8763096364d04dab93db96554f47a81283347b37edf035f07a38b9"
+  ]
+}
+x-commit-hash: "43290035114ef1f4d0f70a95b9db333d5f8678c5"
