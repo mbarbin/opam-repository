@@ -1,0 +1,53 @@
+opam-version: "2.0"
+synopsis: "Tests for eio-writer"
+maintainer: ["Mathieu Barbin"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/eio-writer"
+doc: "https://mbarbin.github.io/eio-writer/"
+bug-reports: "https://github.com/mbarbin/eio-writer/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "ocamlformat" {with-dev-setup & = "0.26.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "bisect_ppx" {with-dev-setup & >= "2.8.3"}
+  "eio" {>= "1.0"}
+  "eio_main" {>= "1.0"}
+  "expect_test_helpers_core" {>= "v0.17" & < "v0.18"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {with-dev-setup & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/eio-writer.git"
+url {
+  src:
+    "https://github.com/mbarbin/eio-writer/releases/download/0.0.8/eio-writer-0.0.8.tbz"
+  checksum: [
+    "sha256=60a3845b51f4efc14b80d1f6c9a212ff3ce899a5851cf5e583bcb16fa67c7a3f"
+    "sha512=471bbd500a5d09656eb0d23586d7222aa57b236bd399079a78876bee9ec68d6e7de4e4933437c95911497dc6408d1cf45ddc05da6c47643cf9714f04c3c02498"
+  ]
+}
+x-commit-hash: "f0315f368cdfd345f0b4b48c15e373ea73b6fc32"
