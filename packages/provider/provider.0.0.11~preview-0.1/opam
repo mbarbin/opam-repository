@@ -1,0 +1,37 @@
+opam-version: "2.0"
+synopsis: "Dynamic Dispatch with Traits"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "ISC"
+homepage: "https://github.com/mbarbin/provider"
+doc: "https://mbarbin.github.io/provider/"
+bug-reports: "https://github.com/mbarbin/provider/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "4.14"}
+  "sexplib0" {>= "v0.16" & < "v0.18"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/provider.git"
+url {
+  src: "https://github.com/mbarbin/provider/archive/438f94dc37cb98599d2d1b7d29f845d2212384b7.tar.gz"
+  checksum: [
+    "sha256=3035c72f57c3553df4ff474ff4b378e3f5573cf1973c61f3ed08ee9a30581186"
+    "sha512=a13f778d30cab9e99533e7dfee54762e52ebd5f38fdd5881103426067b208faa6a64a840cceb4a2c5543efd0ad42b59c1a81803a0f041909a3c439cb16ec8a6b"
+  ]
+}
+
