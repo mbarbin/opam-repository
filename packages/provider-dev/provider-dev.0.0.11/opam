@@ -1,0 +1,58 @@
+opam-version: "2.0"
+synopsis:
+  "Package to regroup dev targets for the provider project, documentation, and more"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "ISC"
+homepage: "https://github.com/mbarbin/provider"
+doc: "https://mbarbin.github.io/provider/"
+bug-reports: "https://github.com/mbarbin/provider/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "5.2"}
+  "ocamlformat" {with-dev-setup & = "0.26.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "bisect_ppx" {with-dev-setup & >= "2.8.3"}
+  "eio" {>= "1.0"}
+  "eio_main" {>= "1.0"}
+  "expect_test_helpers_core" {>= "v0.17" & < "v0.18"}
+  "mdx" {>= "2.4"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {with-dev-setup & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "provider" {= version}
+  "provider-tests" {= version}
+  "sherlodoc" {with-doc & >= "0.2"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/provider.git"
+url {
+  src:
+    "https://github.com/mbarbin/provider/releases/download/0.0.11/provider-0.0.11.tbz"
+  checksum: [
+    "sha256=80e346ccde7dbf39796c3140f914641713c445ccae0183ac2948e3feb18099f3"
+    "sha512=6e7ab4734add6543498cc7d4364a4c257c63dfd4c809e798857eec7b151778c4c307901571fb1bc05f2493af3c024efbfada21e98bc9b8d758e6d9a4b613f34f"
+  ]
+}
+x-commit-hash: "f81d0e4e6aabf40d7c42b1f13334f4ea68bf2a2c"
