@@ -1,0 +1,37 @@
+opam-version: "2.0"
+synopsis: "Declarative Command-line Parsing for OCaml"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/cmdlang"
+doc: "https://mbarbin.github.io/cmdlang/"
+bug-reports: "https://github.com/mbarbin/cmdlang/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "4.14"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/cmdlang.git"
+url {
+  src:
+    "https://github.com/mbarbin/cmdlang/releases/download/0.0.7/cmdlang-0.0.7.tbz"
+  checksum: [
+    "sha256=597006248e0715a101c70e7e3e2be65e96448a369c1dd3b3dcdb78ebde635068"
+    "sha512=7b58db11c720a13b8b4f52459a4e861813532bd991cef64275dd888ff91830e46fc9e283c391c66eb06d8d9ec762a529af6dab699dc7fd9e738a81bc335f58b1"
+  ]
+}
+x-commit-hash: "7d7b1ed2ce14beca9dfe281e7fec8bbd7d302e1d"
