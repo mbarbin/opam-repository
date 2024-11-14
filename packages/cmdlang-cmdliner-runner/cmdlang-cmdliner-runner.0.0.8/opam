@@ -1,0 +1,41 @@
+opam-version: "2.0"
+synopsis: "A cmdlang runner using cmdliner and pp-log"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/pp-log"
+doc: "https://mbarbin.github.io/pp-log/"
+bug-reports: "https://github.com/mbarbin/pp-log/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "4.14"}
+  "cmdlang" {>= "0.0.8"}
+  "cmdlang-to-cmdliner" {>= "0.0.8"}
+  "cmdliner" {>= "1.3.0"}
+  "pp-log" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/pp-log.git"
+url {
+  src:
+    "https://github.com/mbarbin/pp-log/releases/download/0.0.8/pp-log-0.0.8.tbz"
+  checksum: [
+    "sha256=93a9782639aac14ae4d14e210ebf610823d30dd54ee91663c2f8def9bfa09c01"
+    "sha512=84d4783c062db8abe51b3804ff1ce43a735c0ae27c8a0ad3eb968af19517b2b940689ab4da47a61b5481243fbbd344d761c0ab19d09ed7d8ce8953dad854bc21"
+  ]
+}
+x-commit-hash: "d4f1f0384b57311f1ebde9ee452ccfea25989475"
