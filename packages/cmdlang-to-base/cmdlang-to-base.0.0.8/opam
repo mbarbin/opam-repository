@@ -42,8 +42,8 @@ url {
   src:
     "https://github.com/mbarbin/cmdlang/releases/download/0.0.8/cmdlang-0.0.8.tbz"
   checksum: [
-    "sha256=a8ae152889641b6beb897ef5e474b369d23f225b1118a93b32e316729aaa6306"
-    "sha512=91213ce7b9b5eb7f7fd75783c6ab85c3368cb0b7f64e0fbb73f5d5ebca6176e13a5fd1f84e3b58eb1c309f9b31a33aea5069b9c1bbfc19461f228bbd4ef5751f"
+    "sha256=d28ebdf0d0405681a3227dce48946e15060190c616b8e404503fe54576c19cf7"
+    "sha512=57cf44ed4e9d35099ed6e5b67785a1ca21b6e301bb8cd4692b87b1ac420a6bd82e20fa4e639f14cb93a151e63dfbb24f00072ab87bf2463aff70e5b7e9fc0ed9"
   ]
 }
-x-commit-hash: "c2740951448d781d76f631eeb37e2adde0abb613"
+x-commit-hash: "4e10ab22c86e703edfd744c5214e88407652e415"
