@@ -1,0 +1,38 @@
+opam-version: "2.0"
+synopsis: "A basic execution runner for cmdlang based on stdlib.arg"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/cmdlang"
+doc: "https://mbarbin.github.io/cmdlang/"
+bug-reports: "https://github.com/mbarbin/cmdlang/issues"
+depends: [
+  "dune" {>= "3.16"}
+  "ocaml" {>= "4.14"}
+  "cmdlang" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/cmdlang.git"
+url {
+  src:
+    "https://github.com/mbarbin/cmdlang/releases/download/0.0.8/cmdlang-0.0.8.tbz"
+  checksum: [
+    "sha256=a8ae152889641b6beb897ef5e474b369d23f225b1118a93b32e316729aaa6306"
+    "sha512=91213ce7b9b5eb7f7fd75783c6ab85c3368cb0b7f64e0fbb73f5d5ebca6176e13a5fd1f84e3b58eb1c309f9b31a33aea5069b9c1bbfc19461f228bbd4ef5751f"
+  ]
+}
+x-commit-hash: "c2740951448d781d76f631eeb37e2adde0abb613"
