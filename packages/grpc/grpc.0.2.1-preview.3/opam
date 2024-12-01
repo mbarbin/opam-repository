@@ -1,0 +1,52 @@
+opam-version: "2.0"
+synopsis: "A modular gRPC library"
+description:
+  "This library builds some of the signatures and implementations of gRPC functionality. This is used in the more specialised package `grpc-lwt` which has more machinery, however this library can also be used to do some bits yourself."
+maintainer: ["Daniel Quernheim <grpc@quernd.uber.space>"]
+authors: [
+  "Andrew Jeffery <dev@jeffas.io>"
+  "Daniel Quernheim <quernd@users.noreply.github.com>"
+  "Michael Bacarella <m@bacarella.com>"
+  "Sven Anderson <sven@anderson.de>"
+  "Tim McGilchrist <timmcgil@gmail.com>"
+  "Wojtek Czekalski <me@wczekalski.com>"
+  "dimitris.mostrous <dimitris.mostrous@gmail.com>"
+]
+license: "BSD-3-Clause"
+tags: ["network" "rpc" "serialisation"]
+homepage: "https://github.com/mbarbin/ocaml-grpc"
+doc: "https://dialohq.github.io/ocaml-grpc"
+bug-reports: "https://github.com/mbarbin/ocaml-grpc/issues"
+depends: [
+  "dune" {>= "3.7"}
+  "ocaml" {>= "4.08"}
+  "bigstringaf" {>= "0.9.1"}
+  "h2" {>= "0.13.0"}
+  "odoc" {>= "2.4.0" & with-doc}
+  "ppx_deriving"
+  "uri" {>= "4.0.0"}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/ocaml-grpc.git"
+url {
+  src:
+    "https://github.com/mbarbin/ocaml-grpc/releases/download/0.2.1-preview.3/grpc-0.2.1-preview.3.tbz"
+  checksum: [
+    "sha256=4e2720cecdb602903e9c97cc2cb562e4e5d188c6fa121de6ec37386c41da3ee1"
+    "sha512=3873a6d05b1387226fe2b0ca5cd5218040a4dcf9a0cc9935ae9e1b763de6f2edf687bdba40b302581c3c3b1d02b7bfb6a0cd2c7dbd7dca108ce113435972bb96"
+  ]
+}
+x-commit-hash: "19cf74ecd1ff5accf48dd827e8017b2a016dbde5"
