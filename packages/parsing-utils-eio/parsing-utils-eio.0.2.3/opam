@@ -1,0 +1,43 @@
+opam-version: "2.0"
+synopsis: "A lib to make it easier to use generated Parsers/Lexers with Eio"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/parsing-utils"
+doc: "https://mbarbin.github.io/parsing-utils/"
+bug-reports: "https://github.com/mbarbin/parsing-utils/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "5.2"}
+  "eio" {>= "1.0"}
+  "fpath" {>= "0.7.3"}
+  "loc" {>= "0.2.0"}
+  "parsing-utils" {= version}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.9"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/parsing-utils.git"
+url {
+  src:
+    "https://github.com/mbarbin/parsing-utils/releases/download/0.2.3/parsing-utils-0.2.3.tbz"
+  checksum: [
+    "sha256=705d98a84f7150b97d097632817a1f32566e3e5cb10cde4659d93d97e4ae29cd"
+    "sha512=50cdb2ce86e9d493c9eef27a5c8a38c9693c6b2e28391544cd06b317691a726147cc88c16c0173045a149bdf294fbc81076f75fc6ce69b931cd3e12bcc10bdf9"
+  ]
+}
+x-commit-hash: "ab2f512702608610cffc054ffd4c867582e7baa8"
