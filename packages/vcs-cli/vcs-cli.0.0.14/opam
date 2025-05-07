@@ -1,0 +1,64 @@
+opam-version: "2.0"
+synopsis: "A command line tool for the Vcs library"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/vcs"
+doc: "https://mbarbin.github.io/vcs/"
+bug-reports: "https://github.com/mbarbin/vcs/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "5.2"}
+  "cmdlang" {>= "0.0.9"}
+  "fpath" {>= "0.7.3"}
+  "fpath-sexp0" {>= "0.2.2"}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.12"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "sexplib0" {>= "v0.17" & < "v0.18"}
+  "vcs" {= version}
+  "vcs-git-unix" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/vcs.git"
+description: """\
+
+[vcs-cli] is a package from the [vcs] project that provides a
+command-line interface called [ocaml-vcs]. This interface is
+implemented on top of the other packages from the project.
+
+It allows users to run exploratory tests using the [vcs] interface and
+the Git backends available on actual repositories, directly from the
+command line.
+
+This tool can be helpful for reproducing issues with the library or
+getting familiar with some functionality of the project in an
+interactive fashion using real live data.
+
+"""
+tags: [ "cli" "git" "ocaml-vcs" "vcs" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src:
+    "https://github.com/mbarbin/vcs/releases/download/0.0.14/vcs-0.0.14.tbz"
+  checksum: [
+    "sha256=7c28a04df02e0e0247055af814d6ad809431ba93fee013048528dcbd3ae1f8ef"
+    "sha512=f96dde8f0147f4ef301fc92af0a15d640ed54b9815b76a6bbc54b68bfa7615e20cb348dd6326adae4ec7572444730cb414e211bc7ab808912453c1feae0c0427"
+  ]
+}
+x-commit-hash: "bafa6499fa6efcd3083cb22357fa5ba4792fbfc8"
