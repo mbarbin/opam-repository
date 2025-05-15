@@ -1,0 +1,72 @@
+opam-version: "2.0"
+synopsis:
+  "Package to regroup dev targets for the project, documentation, and more"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/crs"
+doc: "https://mbarbin.github.io/crs/"
+bug-reports: "https://github.com/mbarbin/crs/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "5.2"}
+  "ocamlformat" {with-dev-setup & = "0.27.0"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "bisect_ppx" {with-dev-setup & >= "2.8.3"}
+  "cmdlang" {>= "0.0.9"}
+  "crs" {= version}
+  "crs-tests" {= version}
+  "expect_test_helpers_core" {>= "v0.17" & < "v0.18"}
+  "file-rewriter" {>= "0.0.3"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.2.2"}
+  "loc" {>= "0.2.2"}
+  "mdx" {>= "2.4"}
+  "patdiff" {>= "v0.17" & < "v0.18"}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.12"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_expect" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_js_style" {with-dev-setup & >= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "re2" {>= "v0.17" & < "v0.18"}
+  "shexp" {>= "v0.17" & < "v0.18"}
+  "stdio" {>= "v0.17" & < "v0.18"}
+  "textutils" {>= "v0.17" & < "v0.18"}
+  "vcs" {>= "0.0.13"}
+  "vcs-base" {>= "0.0.13"}
+  "vcs-cli" {>= "0.0.13"}
+  "vcs-git-unix" {>= "0.0.13"}
+  "odoc" {with-doc & >= "2.4.4"}
+  "sherlodoc" {with-doc & >= "0.2"}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/crs.git"
+url {
+  src:
+    "https://github.com/mbarbin/crs/releases/download/0.0.20250515/crs-0.0.20250515.tbz"
+  checksum: [
+    "sha256=46a15525dc892d7f61b674c98f4c1301c71297716037ad616b31946ef8569352"
+    "sha512=4107bc17239841bd16b3dee620ab7c39d3880ef1eb5372dcd3509dfd15cf525caff84beb3dbdcf16ef7a47780aba4939e8a5631578d8b4e6921c9d089775c579"
+  ]
+}
+x-commit-hash: "337d6adfaa5dca0e249d9063c36041cd953a4a79"

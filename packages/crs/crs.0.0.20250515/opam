@@ -1,0 +1,91 @@
+opam-version: "2.0"
+synopsis: "A tool for managing code review comments embedded in source code"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/crs"
+doc: "https://mbarbin.github.io/crs/"
+bug-reports: "https://github.com/mbarbin/crs/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17" & < "v0.18"}
+  "cmdlang" {>= "0.0.9"}
+  "file-rewriter" {>= "0.0.3"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.2.2"}
+  "loc" {>= "0.2.2"}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.12"}
+  "ppx_compare" {>= "v0.17" & < "v0.18"}
+  "ppx_enumerate" {>= "v0.17" & < "v0.18"}
+  "ppx_hash" {>= "v0.17" & < "v0.18"}
+  "ppx_here" {>= "v0.17" & < "v0.18"}
+  "ppx_let" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_conv" {>= "v0.17" & < "v0.18"}
+  "ppx_sexp_value" {>= "v0.17" & < "v0.18"}
+  "ppxlib" {>= "0.33"}
+  "re2" {>= "v0.17" & < "v0.18"}
+  "shexp" {>= "v0.17" & < "v0.18"}
+  "stdio" {>= "v0.17" & < "v0.18"}
+  "textutils" {>= "v0.17" & < "v0.18"}
+  "vcs" {>= "0.0.13"}
+  "vcs-base" {>= "0.0.13"}
+  "vcs-git-unix" {>= "0.0.13"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/crs.git"
+description: """\
+
+The [crs] package provides libraries and a CLI to help manage code
+review comments embedded directly in source code using a specialized
+syntax.
+
+With [crs] you can locate, parse, and manipulate these comments
+easily, and perform tasks such as systematically updating comments
+across multiple files, changing their priority, marking them as
+resolved, modifying reporter or assignee information, and more.
+
+This tool can be used during development or integrated into your CI
+pipeline. For example, you can use [crs] to ensure no unresolved
+comments remain before merging a pull request or releasing a new
+version of your software.
+
+Beyond its standalone functionality, [crs] is intended to serve as a
+sharable building block for more comprehensive code review systems and
+collaborative workflows.
+
+The [crs] projects builds upon ideas from [iron], a code review system
+built by Jane Street and released as open source in 2016-2017. We
+deeply appreciate Jane Street’s willingness to share [iron], which has
+provided a valuable starting point for exploring and advancing these
+ideas.
+
+[iron]: https://github.com/janestreet/iron
+
+"""
+tags: [ "code-review" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src:
+    "https://github.com/mbarbin/crs/releases/download/0.0.20250515/crs-0.0.20250515.tbz"
+  checksum: [
+    "sha256=46a15525dc892d7f61b674c98f4c1301c71297716037ad616b31946ef8569352"
+    "sha512=4107bc17239841bd16b3dee620ab7c39d3880ef1eb5372dcd3509dfd15cf525caff84beb3dbdcf16ef7a47780aba4939e8a5631578d8b4e6921c9d089775c579"
+  ]
+}
+x-commit-hash: "337d6adfaa5dca0e249d9063c36041cd953a4a79"
