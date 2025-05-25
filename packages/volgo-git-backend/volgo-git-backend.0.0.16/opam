@@ -1,0 +1,64 @@
+opam-version: "2.0"
+synopsis: "An IO-free library that parses the output of Git commands"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/vcs"
+doc: "https://mbarbin.github.io/vcs/"
+bug-reports: "https://github.com/mbarbin/vcs/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "4.14"}
+  "astring" {>= "0.8.5"}
+  "fpath" {>= "0.7.3"}
+  "fpath-sexp0" {>= "0.2.2"}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.13"}
+  "ppx_sexp_conv" {>= "v0.16"}
+  "ppx_sexp_value" {>= "v0.16"}
+  "ppxlib" {>= "0.33"}
+  "sexplib0" {>= "v0.16"}
+  "volgo" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/vcs.git"
+description: """\
+
+[volgo] is a set of OCaml libraries for interacting with Git
+repositories. It provides a type-safe and direct-style API to
+programmatically perform Git operations, ranging from creating commits
+and branches to loading and navigating commit graphs in memory,
+computing diffs between revisions, and more.
+
+[Volgo_git_backend] is not meant to be used directly by a user. Rather
+it is a helper library for building Git CLI backends for [volgo]. Given
+the ability to run a [git] process, this library knows which commands
+to run, how to parse their output, and how to interpret their exit
+codes to turn them into typed results.
+
+"""
+tags: [ "cli" "git" "vcs" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src:
+    "https://github.com/mbarbin/vcs/releases/download/0.0.16/volgo-0.0.16.tbz"
+  checksum: [
+    "sha256=41ee54359e55011eb8b1a53d660b5816fcb91c9218808eb6668afa5a1160fcb5"
+    "sha512=d831612260a90d607beff88357ed99d9b26930db4bb83ef2bab8b0a02326f62cde6746ca7a2a647abd6eade15775b46596d8252086058ecddab622c56dea81c2"
+  ]
+}
+x-commit-hash: "545b4fdddc7039b1b3e241ec45fbe00d3a96a391"
