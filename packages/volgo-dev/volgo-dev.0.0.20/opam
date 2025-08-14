@@ -1,0 +1,83 @@
+opam-version: "2.0"
+synopsis:
+  "Package to regroup dev targets for the volgo project, documentation, and more"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/vcs"
+doc: "https://mbarbin.github.io/vcs/"
+bug-reports: "https://github.com/mbarbin/vcs/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "5.3" & < "5.4~"}
+  "ocamlformat" {with-dev-setup & = "0.27.0"}
+  "astring" {>= "0.8.5"}
+  "base" {>= "v0.17"}
+  "base_quickcheck" {>= "v0.17"}
+  "bisect_ppx" {with-dev-setup & >= "2.8.3"}
+  "cmdlang" {>= "0.0.9"}
+  "conf-git"
+  "conf-hg"
+  "core" {>= "v0.17"}
+  "eio" {>= "1.0"}
+  "eio_main" {>= "1.0"}
+  "expect_test_helpers_core" {>= "v0.17"}
+  "fpath" {>= "0.7.3"}
+  "fpath-base" {>= "0.3.1"}
+  "fpath-sexp0" {>= "0.3.1"}
+  "mdx" {>= "2.4"}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.14"}
+  "ppx_compare" {>= "v0.17"}
+  "ppx_enumerate" {>= "v0.17"}
+  "ppx_expect" {>= "v0.17"}
+  "ppx_hash" {>= "v0.17"}
+  "ppx_here" {>= "v0.17"}
+  "ppx_js_style" {with-dev-setup & >= "v0.17"}
+  "ppx_let" {>= "v0.17"}
+  "ppx_sexp_conv" {>= "v0.17"}
+  "ppx_sexp_message" {>= "v0.17"}
+  "ppx_sexp_value" {>= "v0.17"}
+  "ppxlib" {>= "0.33"}
+  "re" {>= "1.8.0"}
+  "sexp_pretty" {>= "v0.17"}
+  "spawn" {>= "v0.17"}
+  "stdio" {>= "v0.17"}
+  "vcs-test-helpers" {= version}
+  "volgo" {= version}
+  "volgo-base" {= version}
+  "volgo-git-backend" {= version}
+  "volgo-git-eio" {= version}
+  "volgo-git-unix" {= version}
+  "volgo-hg-backend" {= version}
+  "volgo-hg-eio" {= version}
+  "volgo-hg-unix" {= version}
+  "volgo-tests" {= version}
+  "volgo-vcs" {= version}
+  "sherlodoc" {with-doc & >= "0.2"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/vcs.git"
+url {
+  src:
+    "https://github.com/mbarbin/vcs/releases/download/0.0.20/volgo-0.0.20.tbz"
+  checksum: [
+    "sha256=1db3d67f074f392ff6a953808e3f47cc524f347d3dbcb76ef2b88cc7ecfb5690"
+    "sha512=e0ece6c6dab5ea14f70b208518487069dfe49318295e6a5a2da67e4ffe12872bd4aca7c7140533665573e74770c665fcf9e600b4b5cae3af3a23b7fbb274123e"
+  ]
+}
+x-commit-hash: "b6372b58f5a38fee4bce2c8cd9c7f4119c881b04"

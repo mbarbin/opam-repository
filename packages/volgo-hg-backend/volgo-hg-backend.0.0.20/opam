@@ -1,0 +1,61 @@
+opam-version: "2.0"
+synopsis: "An IO-free library that parses the output of Mercurial commands"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/vcs"
+doc: "https://mbarbin.github.io/vcs/"
+bug-reports: "https://github.com/mbarbin/vcs/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "4.14"}
+  "astring" {>= "0.8.5"}
+  "fpath" {>= "0.7.3"}
+  "fpath-sexp0" {>= "0.3.1"}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.14"}
+  "sexplib0" {>= "v0.16"}
+  "volgo" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/vcs.git"
+description: """\
+
+[volgo] is a set of OCaml libraries for interacting with Git
+repositories. It provides a type-safe and direct-style API to
+programmatically perform Git operations, ranging from creating commits
+and branches to loading and navigating commit graphs in memory,
+computing diffs between revisions, and more.
+
+[Volgo_hg_backend] is not meant to be used directly by a user. Rather
+it is a helper library for building Mercurial CLI backends for
+[volgo]. Given the ability to run a [hg] process, this library knows
+which commands to run, how to parse their output, and how to
+interpret their exit codes to turn them into typed results.
+
+"""
+tags: [ "cli" "git" "mercurial" "vcs" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src:
+    "https://github.com/mbarbin/vcs/releases/download/0.0.20/volgo-0.0.20.tbz"
+  checksum: [
+    "sha256=1db3d67f074f392ff6a953808e3f47cc524f347d3dbcb76ef2b88cc7ecfb5690"
+    "sha512=e0ece6c6dab5ea14f70b208518487069dfe49318295e6a5a2da67e4ffe12872bd4aca7c7140533665573e74770c665fcf9e600b4b5cae3af3a23b7fbb274123e"
+  ]
+}
+x-commit-hash: "b6372b58f5a38fee4bce2c8cd9c7f4119c881b04"

@@ -1,0 +1,68 @@
+opam-version: "2.0"
+synopsis: "Helper library to write tests using vcs"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/vcs"
+doc: "https://mbarbin.github.io/vcs/"
+bug-reports: "https://github.com/mbarbin/vcs/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "5.2"}
+  "base" {>= "v0.17"}
+  "eio" {>= "1.0"}
+  "fpath" {>= "0.7.3"}
+  "fpath-sexp0" {>= "0.3.1"}
+  "pp" {>= "2.0.0"}
+  "pplumbing" {>= "0.0.14"}
+  "ppx_compare" {>= "v0.17"}
+  "ppx_enumerate" {>= "v0.17"}
+  "ppx_hash" {>= "v0.17"}
+  "ppx_here" {>= "v0.17"}
+  "ppx_let" {>= "v0.17"}
+  "ppx_sexp_conv" {>= "v0.17"}
+  "ppx_sexp_value" {>= "v0.17"}
+  "ppxlib" {>= "0.33"}
+  "volgo" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/vcs.git"
+description: """\
+
+[volgo] is a set of OCaml libraries for interacting with Git
+repositories. It provides a type-safe and direct-style API to
+programmatically perform Git operations, ranging from creating
+commits and branches to loading and navigating commit graphs in
+memory, computing diffs between revisions, and more.
+
+[Vcs_test_helpers] is a library aimed at making it easier to write
+tests for libraries using [Vcs] as a dependency. For example, it
+contains helpers for setting the running user's Git config, creating
+temporary repositories, and more.
+
+"""
+tags: [ "git" "tests" "vcs" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src:
+    "https://github.com/mbarbin/vcs/releases/download/0.0.20/volgo-0.0.20.tbz"
+  checksum: [
+    "sha256=1db3d67f074f392ff6a953808e3f47cc524f347d3dbcb76ef2b88cc7ecfb5690"
+    "sha512=e0ece6c6dab5ea14f70b208518487069dfe49318295e6a5a2da67e4ffe12872bd4aca7c7140533665573e74770c665fcf9e600b4b5cae3af3a23b7fbb274123e"
+  ]
+}
+x-commit-hash: "b6372b58f5a38fee4bce2c8cd9c7f4119c881b04"
