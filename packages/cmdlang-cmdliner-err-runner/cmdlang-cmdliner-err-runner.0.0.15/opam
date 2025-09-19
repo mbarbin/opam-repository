@@ -1,0 +1,61 @@
+opam-version: "2.0"
+synopsis: "Cmdlang runner for programs using [Err] with a cmdliner backend"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/pplumbing"
+doc: "https://mbarbin.github.io/pplumbing/"
+bug-reports: "https://github.com/mbarbin/pplumbing/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "4.14"}
+  "cmdlang" {>= "0.0.9"}
+  "cmdlang-to-cmdliner" {>= "0.0.9"}
+  "cmdliner" {>= "1.3.0"}
+  "pplumbing-err" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/pplumbing.git"
+description: """\
+
+[pplumbing] defines a set of utility libraries to use with [pp]. It
+is compatible with [logs] and inspired by design choices used by
+[dune] for user messages:
+
+[Cmdlang_cmdliner_runner] is a library for running command line
+programs specified with [cmdlang] with [cmdliner] as a backend and
+making opinionated choices, assuming your dependencies are using
+[Err].
+
+[cmdlang]: https://github.com/mbarbin/cmdlang
+[cmdliner]: https://github.com/dbuenzli/cmdliner
+[dune]: https://github.com/ocaml/dune
+[logs]: https://github.com/dbuenzli/logs
+[pp]: https://github.com/ocaml-dune/pp
+
+"""
+tags: [ "cli" "cmdlang" "logs" "pp" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src:
+    "https://github.com/mbarbin/pplumbing/releases/download/0.0.15/pplumbing-0.0.15.tbz"
+  checksum: [
+    "sha256=8bb9a79a8a38c330ec98dabf808ce0f98dcaa315162bb377529402851dba257a"
+    "sha512=4eedd741951224afa06bdd02cf6062d6bf5e587a6f5e9e5fe9055ac9ccae37b1c19f43a0fcb32a507ecc48be3f2cd5b18575982760f0f0be2be0dfe658909d23"
+  ]
+}
+x-commit-hash: "e89d9aa2e5e256fbd4288ab58bc4ed4790a987de"
