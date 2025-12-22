@@ -1,0 +1,52 @@
+opam-version: "2.0"
+synopsis: "Representing ranges of lexing positions from parsed files"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/loc"
+doc: "https://mbarbin.github.io/loc/"
+bug-reports: "https://github.com/mbarbin/loc/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "4.14"}
+  "dyn" {>= "3.17"}
+  "fpath" {>= "0.7.3"}
+  "sexplib0" {>= "v0.16"}
+  "stdune" {>= "3.17"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/loc.git"
+description: """\
+
+Loc is an OCaml library for manipulating code locations, which are
+ranges of lexing positions from a parsed file.
+
+Attaching locations to nodes manipulated by programs can be useful for
+various applications such as compilers, interpreters, linters, and
+refactoring tools.
+
+"""
+tags: [ "code-locations" "lexing" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src: "https://github.com/mbarbin/loc/releases/download/0.3.2/loc-0.3.2.tbz"
+  checksum: [
+    "sha256=0da55edc03194740836b7b098b396a1ac742c04054ccfa9a54a1633e27ed4ccd"
+    "sha512=2bd80c4e50310a85a5133246569fef731e61b2ab57efd921645ba66d11e6f4f140b45f74c8ee7c9f48b38b70cafd8d2c0423899786466292b9721f234f1e467b"
+  ]
+}
+x-commit-hash: "aa0c7051d69d0112e9b44d972ed4d64964fd3ed2"
