@@ -1,0 +1,38 @@
+opam-version: "2.0"
+synopsis: "Adding a few functions to Pp"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/pp-extended"
+doc: "https://mbarbin.github.io/pp-extended/"
+bug-reports: "https://github.com/mbarbin/pp-extended/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "5.2"}
+  "pp" {>= "2.0.0"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/pp-extended.git"
+url {
+  src:
+    "https://github.com/mbarbin/pp-extended/releases/download/0.0.7/pp-extended-0.0.7.tbz"
+  checksum: [
+    "sha256=19195c028e38a054c1e2010bede2ec2115f285b3c0043c1361d3664c3f8dcd65"
+    "sha512=6f7de55188e4b3462ae406c5e4de8132561141726ccd78f4df91de7cd433b49acbbdc952555598c4c148a302d1f30310fed49b1b8acb7918c0d8eb34bf115f4e"
+  ]
+}
+x-commit-hash: "ce81df51fb20c834549f1ade497bf490e0931b7c"
