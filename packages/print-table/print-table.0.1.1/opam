@@ -47,7 +47,7 @@ tags: [ "table" "markdown" ]
 x-maintenance-intent: [ "(latest)" ]
 url {
   src:
-    "https://github.com/mbarbin/print-table/releases/download/untagged-53b5117b732ef2a0d2de/print-table-0.1.1.tbz"
+    "https://github.com/mbarbin/print-table/releases/download/untagged-ac8a031895722de82a1a/print-table-0.1.1.tbz"
   checksum: [
     "sha256=90192fa2852e812cc91d82228b4b30009a3a79504b05da186f7ed1e9deffb547"
     "sha512=2d21392fc79b88ef77b5f45589c392b99f54ba7332e6e15acf5851fa134308223922e1051780dde5091d32a939f2478c8c3603a540d6940f23eaed892f4b8c50"
