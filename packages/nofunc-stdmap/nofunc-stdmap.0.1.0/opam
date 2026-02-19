@@ -1,0 +1,38 @@
+opam-version: "2.0"
+synopsis: "Map adapted from Stdlib but no functors"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["OCaml Stdlib" "Mathieu Barbin"]
+license: "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
+homepage: "https://github.com/mbarbin/nofunc-keyed"
+doc: "https://mbarbin.github.io/nofunc-keyed/"
+bug-reports: "https://github.com/mbarbin/nofunc-keyed/issues"
+depends: [
+  "dune" {>= "3.20"}
+  "ocaml" {>= "4.14"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/nofunc-keyed.git"
+x-maintenance-intent: ["(latest)"]
+url {
+  src:
+    "https://github.com/mbarbin/nofunc-keyed/releases/download/0.1.0/nofunc-keyed-0.1.0.tbz"
+  checksum: [
+    "sha256=f3af2d2b134ef95b25248447190b3936301c54c27d984afacbc5fc1161290b5a"
+    "sha512=fe0d0265d3860ea6b6a96f04e2bd6424d843fa79321627f82c32c24d5acdb6aa81bb8a26ed43420e2e3f2995e80519e6226970697e35c67808e3d9f7ea9337f5"
+  ]
+}
+x-commit-hash: "bea906875a5e58f706991d057c50889f2261e880"
