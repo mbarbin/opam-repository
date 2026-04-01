@@ -1,0 +1,68 @@
+opam-version: "2.0"
+synopsis:
+  "Command line helpers to configure the [err], [logs] and [fmt] libraries"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "MIT"
+homepage: "https://github.com/mbarbin/pplumbing"
+doc: "https://mbarbin.github.io/pplumbing/"
+bug-reports: "https://github.com/mbarbin/pplumbing/issues"
+depends: [
+  "dune" {>= "3.17"}
+  "ocaml" {>= "4.14"}
+  "cmdlang" {>= "0.0.9"}
+  "fmt" {>= "0.9.0"}
+  "logs" {>= "0.7.0"}
+  "pp" {>= "2.0.0"}
+  "pplumbing-err" {= version}
+  "pplumbing-log" {= version}
+  "pplumbing-pp-tty" {= version}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/pplumbing.git"
+description: """\
+
+[pplumbing] defines a set of utility libraries to use with [pp].
+It is compatible with [logs] and inspired by design choices used
+by [dune] for user messages.
+
+These libraries are meant to combine nicely into a small ecosystem
+of useful helpers to build CLIs in OCaml.
+
+[Pplumbing_log_cli] contains functions to work with [Err] on the
+side of end programs (such as a command line tool). It defines
+[cmdlang] command line helpers to configure the [Err] library,
+while taking care of setting the [logs] and [fmt] style rendering.
+
+[cmdlang]: https://github.com/mbarbin/cmdlang
+[dune]: https://github.com/ocaml/dune
+[fmt]: https://github.com/dbuenzli/fmt
+[logs]: https://github.com/dbuenzli/logs
+[pp]: https://github.com/ocaml-dune/pp
+
+"""
+tags: [ "cli" "cmdlang" "logs" "pp" ]
+x-maintenance-intent: [ "(latest)" ]
+url {
+  src:
+    "https://github.com/mbarbin/pplumbing/releases/download/0.0.17/pplumbing-0.0.17.tbz"
+  checksum: [
+    "sha256=b276e9472ab3f5a4d4ba12e2e5919a54e0f1b8be52df31543686b00625dc8c2c"
+    "sha512=0386183c0cfe2c2b3e23c2ee3e0b20bd5643c9f6a88f1eecdb5ead619ef81eaa3b049a37180e76f25a86be07cb160f895f6fe57278a821009ff67386e7d2ca0c"
+  ]
+}
+x-commit-hash: "d639bfbe4e70849dea761b7fedf24f5a5b21020b"
