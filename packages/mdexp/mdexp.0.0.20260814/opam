@@ -1,0 +1,51 @@
+opam-version: "2.0"
+synopsis: "Literate Programming with Embedded Snapshots"
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
+authors: ["Mathieu Barbin"]
+license: "LGPL-3.0-or-later WITH LGPL-3.0-linking-exception"
+homepage: "https://github.com/mbarbin/mdexp"
+doc: "https://mbarbin.github.io/mdexp/"
+bug-reports: "https://github.com/mbarbin/mdexp/issues"
+depends: [
+  "dune" {>= "3.20"}
+  "ocaml" {>= "5.3"}
+  "cmdlang" {>= "0.0.10"}
+  "cmdlang-cmdliner-err-runner" {>= "0.0.16"}
+  "dune-build-info" {>= "3.20"}
+  "dyn" {>= "3.20"}
+  "fpath" {>= "0.7.3"}
+  "loc" {>= "0.3.3"}
+  "ordering" {>= "3.20"}
+  "pp" {>= "2.0.0"}
+  "pplumbing-err" {>= "0.0.17"}
+  "pplumbing-pp-tty" {>= "0.0.17"}
+  "sexplib0" {>= "v0.17"}
+  "yojson" {>= "3.0.0"}
+  "yojson-five" {>= "3.0.0"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/mbarbin/mdexp.git"
+x-maintenance-intent: ["(latest)"]
+url {
+  src:
+    "https://github.com/mbarbin/mdexp/releases/download/0.0.20260814/mdexp-0.0.20260814.tbz"
+  checksum: [
+    "sha256=7d8cc2d5bab65bc56cd20106dc4c1663d61057d4986e3ae4a78954d4f1d34ff2"
+    "sha512=c91460deaf9f5f354503de1318819096e65645fd3fd9fafc41d4795a0e2ac3870fe6116f4d3018ac379852de765b2b62796eb7e43668c3a5d05ef938b10713bd"
+  ]
+}
+x-commit-hash: "fb6f86724da0a5739779024091eafac624ec04ed"
